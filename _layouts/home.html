@@ -2,17 +2,18 @@
 
 {% if site.layout == 'stacked' %}
   <div class="container-lg py-6 p-responsive text-center">
-    {% include masthead.html metadata=true %}
+    <!-- {% include masthead.html metadata=true %} -->
+     {% include vidar_anypos.html %}
 
-    <div {% if site.style == 'dark' %}class="text-white"{% endif %}>
+    <!-- <div {% if site.style == 'dark' %}class="text-white"{% endif %}>
       {{ content }}
-    </div>
+    </div> -->
 
-    <div class="my-6">
-      {% include projects.html %}
-    </div>
+    <!-- <div class="my-6">
+      {% include vidar_anypos.html %}
+    </div> -->
 
-    {% if site.topics %}
+    <!-- {% if site.topics %}
       <div class="my-6">
         {% include interests.html %}
       </div>
@@ -22,7 +23,7 @@
       <div class="my-6">
         {% include thoughts.html %}
       </div>
-    {% endunless %}
+    {% endunless %} -->
   </div>
 {% else %}
   <div class="d-md-flex min-height-full {% unless site.style == 'dark' %}border-md-bottom{% endunless %}">

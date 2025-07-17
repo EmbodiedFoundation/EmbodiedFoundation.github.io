@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Embodied Foundation Video Models">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Embodied Foundation Video Models</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://github.com/thu-ml/">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <!-- <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div> -->
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Embodied Video Foundation Model: VIDAR & AnyPos</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <!-- <a>Xuezhou Xu</a>*<sup>2</sup>, -->
+              <a href="https://github.com/yaofeng1998">Yao Feng</a>*<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://github.com/thkkk">Hengkai Tan</a>*<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://github.com/thkkk">Xinyi Mao</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://github.com/thkkk">Shuhe Huang</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://github.com/thkkk">Guodong Liu</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://github.com/thkkk">Hengkai Tan</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://github.com/thkkk">Chendong Xiang</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://github.com/thkkk">Zhongkai Hao</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://github.com/thkkk">Hang Su</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://github.com/thkkk">Jun Zhu</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Tsinghua University</span><br>
+            <span class="author-block"><sup>*</sup>Project Co-lead</span>
+          </div>
+
+          <!-- <div class="is-size-5 publication-authors">
+            <span style="font-weight: bold;">ICML 2024</span>
+          </div> -->
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2411.01850"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2411.01850"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/thkkk/manibox"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code & Data</span>
+                  </a>
+              </span>
+              
+              <span class="link-block">
+                <a href="https://mp.weixin.qq.com/s/p1WTlfR4bcsh5EQhbjuayg"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-external-link-alt"></i>
+                  </span>
+                  <span>量子位推送(in Chinese)</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="https://zhuanlan.zhihu.com/p/15565509532"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-external-link-alt"></i>
+                  </span>
+                  <span>知乎文章(in Chinese)</span>
+                </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+              </span> -->
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="video-container mb-6">
+  <video controls width="100%" style="max-width: 800px;">
+    <source src="{{ '/assets/videos/VIDAR_AnyPos.mp4' | relative_url }}" type="video/mp4">
+    <p>Your browser doesn't support HTML5 video. Here is a <a href="{{ '/assets/videos/VIDAR_AnyPos.mp4' | relative_url }}">link to the video</a> instead.</p>
+  </video>
+</div>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Vision-language-action (VLA) models have shown promise on task-conditioned control in complex settings such as bimanual manipulation.
+            However, the heavy reliance on task-specific human demonstrations limits their generalization and incurs high data acquisition costs.
+            We present a new notion of <em>task-agnostic action </em> paradigm that decouples action execution from task-specific conditioning, enhancing scalability, efficiency, and cost-effectiveness.
+            To be specific, we introduce <strong>VIDAR</strong>, a foundation video model for future action prediction,
+            and <strong>AnyPos</strong>, an inverse dynamics model equipped with Arm-Decoupled Estimation and a Direction-Aware Decoder (DAD) that is able to learn from task-agnostic data.
+            To address the data collection challenge, we introduce <strong>ATARA</strong>(Automated Task-AgnosticRandom Actions), a novel data collection framework that automatically generates large-scale task-agnostic actions for bimanual manipulation efficiently.
+            Our experiments demonstrate that with only 20 minutes of human demonstrations on an unseen robot platform (1% of typical data requirement), our pipeline can generalize to unseen tasks and backgrounds with strong semantic understanding, surpassing state-of-the-art method.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">TODO: demo</h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">VIDAR: VIdeo Diffusion for Action Reasoning</h2>
+        <!-- pic -->
+        <div class="has-text-centered my-5">
+          <figure class="image">
+            <img src="/assets/pdfs/vidar.svg" alt="VIDAR Architecture" style="max-width: 120%; height: auto;">
+          </figure>
+          <p class="has-text-grey is-size-7">Figure 1: Overview of VIDAR</p>
+        </div>
+        
+        <div class="content has-text-justified">
+          <p>
+            VIDAR is a foundation video diffusion model for video prediction and masked inverse dynamics model (MIDM) for action regression.
+            It is trained on 750K multi-view bimanual videos with test-time scaling (TTS) applied during testing, VIDAR can adapt to new robot platforms with 20 minutes of demonstrations with state-of-the-art performance and generalize to unseen tasks with strong semantic understanding.
+          </p>
+        </div>
+
+        <!-- Key Techniques -->
+        <div class="content has-text-justified">
+          <h3 class="title is-4">Key Techniques</h3>
+          <ul>
+            <li><strong>Video Generation Model:</strong> Rectified flow models with emboided pre-training and fine-tuning on unified observation space.</li>
+            <li><strong>Masked Inverse Dynamics Model (MIDM):</strong> 
+              Inverse dynamics models often suffer from poor generalization due to the presence of background noise, texture biases, and visual distractions in high-dimensional observation, while MIDM can focus on task-relevent regions via implicit mask prediction.
+            </li>
+            <li><strong>Test-Time Scaling (TTS):</strong> We generate <em>K</em> candidate video trajectories using different random seeds. Then rank these trajectories using a pretrained evaluator(e.g., CLIP or a vision-language model) and select the one which scores the highest.</li>
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Anypos: Automated Task-Agnostic Actions for Bimanual Manipulation</h2>
+
+        <!-- pic -->
+        <div class="has-text-centered my-5">
+          <figure class="image">
+            <img src="/assets/pdfs/anypos.svg" alt="VIDAR Architecture" style="max-width: 120%; height: auto;">
+          </figure>
+          <p class="has-text-grey is-size-7">Figure 2: Overview of AnyPos</p>
+        </div>
+
+        <div class="content has-text-justified">
+          <p>
+            AnyPos is a robot-specific image-to-action model trained entirely on task-agnostic trajectories sampled by ATARA. It integrates two key techniques to enhance performance: <strong>Arm-Decoupled Estimation</strong> and <strong>Direction-Aware Decoder (DAD)</strong>.
+            Together, ATARA and AnyPos constitute a fully task-agnostic framework for training IDMs without goal supervision.
+            By combining scalable unsupervised data collection with physically informed learning architectures, our approach demonstrates that task-agnostic action data can serve as a practical and powerful foundation for generalizable manipulation.
+          </p>
+        </div>
+
+        <!-- Key Techniques -->
+        <div class="content has-text-justified">
+          <h3 class="title is-4">Key Techniques</h3>
+          <ul>
+            <li><strong>ATARA:</strong> A reinforcement learning framework that constructs a coverage-aware mapping from end-effector space to joint space. Therefore, it enables efficient task-agnostic data generation that preserves inherently encoded robot embodiment information and broad behavioral coverage, serving as a reusable prior for downstream policy learning.</li>
+            <li><strong>Arm-Decoupled Estimation:</strong> 
+            We observe that when estimating left arm joints, the model often attends to visual features of the right arm, and vice versa. To mitigate this, we isolate the input features per arm. We (1)split the left and right arms in the observation <em>x</em>, then (2)use two sub-networks estimate joint positions for each arm independently. Gripper poses are estimated by specialized networks. This decoupling reduces the visual hypothesis space, improves estimation accuracy, and enables specialization per arm.
+            </li>
+            <li><strong>Direction-Aware Decoder(DAD):</strong> For action estimation networks, we choose DINOv2 with register (DINOv2-Reg) as the visual encoder, and uses three core componets to meet the high-precision requirement for action prediction: (1)Multi-Scale Dilated Convolutions (2)Deformable Convolutions (3)Angle-Sensitive Pooling</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
+        free-viewpoint
+        portraits.
+      </h2>
+    </div>
+  </div>
+</section> -->
+
+<!-- 
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/steve.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/chair-tp.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/shiba.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/fullbody.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/blueshirt.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/mask.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/coffee.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/toby2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- <hr>
+<h3>Team (TODO)</h3>
+<section>
+  <div class="box alt" style="margin-bottom: 1em;">
+    <div class="row 50% uniform" style="
+    width: 80%; 
+    display: flex;      /* 新增 */
+    flex-wrap: wrap;    /* 允许换行 */
+    justify-content: center; /* 水平居中 */
+  ">
+      <div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 12.5%">
+        <a href="https://cheng-chi.github.io/"><span class="image fit" style="margin-bottom: 0.5em;">
+          <img src="favicon.ico" alt="" style="border-radius: 50%;" /></span>Yao Feng<sup>*1,2</sup></a></div>
+      
+      <div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 12.5%">
+        <a href="https://zhenjiaxu.com/"><span class="image fit" style="margin-bottom: 0.5em;">
+          <img src="favicon.ico" alt="" style="border-radius: 50%;" /></span>Hengkai Tan<sup>*1,2</sup></a></div>
+      
+      <div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 12.5%">
+        <a href="https://chuerpan.com/"><span class="image fit" style="margin-bottom: 0.5em;">
+          <img src="favicon.ico" alt="" style="border-radius: 50%;" /></span>Xinyi Mao<sup>1</sup></a></div>
+
+      <div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 12.5%">
+        <a href="https://www.eacousineau.com/"><span class="image fit" style="margin-bottom: 0.5em;">
+          <img src="favicon.ico" alt="" style="border-radius: 50%;" /></span>Shuhe Huang<sup>3</sup></a></div>
+      
+      <div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 12.5%">
+        <a href="http://www.benburchfiel.com/"><span class="image fit" style="margin-bottom: 0.5em;">
+          <img src="favicon.ico" alt="" style="border-radius: 50%;" /></span>Guodong Liu<sup>3</sup></a></div>
+
+      <div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 12.5%">
+        <a href="https://www.cs.cmu.edu/~sfeng/"><span class="image fit" style="margin-bottom: 0.5em;">
+          <img src="favicon.ico" alt="" style="border-radius: 50%;" /></span>Chendong Xiang<sup>3</sup></a></div>
+
+      <div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 12.5%">
+        <a href="https://www.cs.cmu.edu/~sfeng/"><span class="image fit" style="margin-bottom: 0.5em;">
+          <img src="favicon.ico" alt="" style="border-radius: 50%;" /></span>Zhongkai Hao<sup>3</sup></a></div>
+              
+      <div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 12.5%">
+        <a href="https://groups.csail.mit.edu/locomotion/russt.html"><span class="image fit" style="margin-bottom: 0.5em;">
+          <img src="favicon.ico" alt="" style="border-radius: 50%;" /></span>Hang Su<sup>3</sup></a></div>
+
+      <div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 12.5%"
+      ><a href="https://shurans.github.io/"><span class="image fit" style="margin-bottom: 0.5em;">
+        <img src="favicon.ico" alt="" style="border-radius: 50%;" /></span>Jun Zhu<sup>1,2</sup></a></div>
+      
+    </div>
+  </div>
+</section> -->
+<!-- <p>
+  <sup>1</sup> Tsinghua University&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <sup>2</sup>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <sup>3</sup>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <sup>4</sup> MIT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+  <!-- <sup>*</sup> Indicates Co-Lead
+</p> -->
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    If you find our work helpful, please cite us:
+    <pre><code>
+      TODO:
+      Generalist Bimanual Manipulation via Foundation Video Diffusion Models
+      Yao Feng*#, Hengkai Tan*, Xinyi Mao, Guodong Liu, Shuhe Huang, Chendong Xiang, Hang Su, Jun Zhu
+      AnyPos: Automated Task-Agnostic Actions for Bimanual Manipulation
+      Hengkai Tan*#, Yao Feng*, Xinyi Mao*, Shuhe Huang, Guodong Liu, Zhongkai Hao, Hang Su, Jun Zhu
+      #: Project Lead
+    </code></pre>
+    Thank you!
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://arxiv.org/pdf/2411.01850">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/thkkk" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 Intsernational License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
