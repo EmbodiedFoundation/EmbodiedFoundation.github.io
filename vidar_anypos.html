@@ -254,31 +254,29 @@
                 However, <strong>the heavy reliance on task-specific human demonstrations</strong> limits their generalization and incurs <strong>high data acquisition costs</strong>.
               </li>
               <li>
-                We present a new notion of <strong><em>task-agnostic action </em></strong> paradigm that <strong>decouples action execution from task-specific conditioning</strong>, enhancing scalability, efficiency, and cost-effectiveness.
+                We present a new notion of <strong><em>task-agnostic action </em></strong> paradigm that <strong>decouples action execution from task-specific conditioning</strong> to effectively overcome those limitations.
               </li>
               <li>
-                By using vision-generation model for future observation prediction and a downstream inverse dynamics model (IDM) for action regression, we can achieve <strong>exceptional generalization capability</strong> and <strong>remarkable data efficiency</strong>.
+                To address the data collection challenges posed by this paradigm, we introduce <strong>ATARA</strong> (Automated Task-AgnosticRandom Actions), a novel data collection framework that automatically <strong>generates large-scale task-agnostic actions</strong> for bimanual manipulation efficiently. 
               </li>
               <li>
-                To be specific, we introduce <strong>VIDAR</strong>, a foundation video model for future action prediction,
+                By using a vision-generation model for future observation prediction and a downstream inverse dynamics model (IDM) for action regression, we can achieve <strong>exceptional generalization capability</strong> and <strong>remarkable data efficiency</strong>.
               </li>
               <li>
-                and <strong>AnyPos</strong>, an inverse dynamics model equipped with Arm-Decoupled Estimation and a Direction-Aware Decoder (DAD) that is able to learn from task-agnostic data.
+                <strong>VIDAR</strong> (VIdeo Diffusion for Action Reasonin) is a two-stage framework that leverages a large-scale, diffusion-based video pre-training model and a novel masked inverse dynamics model (MIDM) for action prediction, which can be generalized to an unseen robot platform <strong>with only 20 minutes of human demonstrations</strong>.
               </li>
               <li>
-                To address the data collection challenge, we introduce <strong>ATARA</strong> (Automated Task-AgnosticRandom Actions), a novel data collection framework that automatically generates large-scale task-agnostic actions for bimanual manipulation efficiently. 
+                <strong>AnyPos</strong> is another inverse dynamics model equipped with Arm-Decoupled Estimation and a Direction-Aware Decoder (DAD) that <strong>is able to learn from ATARA-generated task-agnostic data</strong>. Therefore, ATARA and AnyPos constitute a fully task-agnostic framework for training IDMs <strong>without goal supervision</strong>.
               </li>
               <li>
-                <strong>Large-scale human demonstrations are no longer required, and the data collection process can be automated (TODO: refer to abs)</strong>. 
+                Our experiments demonstrate that our VIDAR framework can generalize to unseen tasks and backgrounds with strong semantic understanding, surpassing state-of-the-art methods like VPP and UniPi.
               </li>
               <li>
-                Our experiments demonstrate that <strong>with only 20 minutes of human demonstrations on an unseen robot platform</strong> (1% of typical data requirement), our pipeline can generalize to unseen tasks and backgrounds with strong semantic understanding, surpassing state-of-the-art method. 
-              </li>
-              <li>
-                IDM Replay...
+                We additionally integrate a video-conditioned action validation module to verify the feasibility of learned policies across diverse manipulation tasks, and we demonstrate that the AnyPos-ATARA pipeline yields a <strong>51% improvement</strong> in test accuracy and achieves <strong>30-40% higher success rates</strong> in downstream tasks such as lifting, pick-and-place, and clicking, using replay-based video validation
               </li>
             </ul>
           </item>
+
         </div>
       </div>
     </div>
