@@ -107,9 +107,6 @@
               <a href="https://github.com/thkkk">Guodong Liu</a><sup>1</sup>,
             </span>
             <span class="author-block">
-              <a href="https://github.com/thkkk">Hengkai Tan</a><sup>1</sup>,
-            </span>
-            <span class="author-block">
               <a href="https://github.com/thkkk">Chendong Xiang</a><sup>1</sup>,
             </span>
             <span class="author-block">
@@ -174,7 +171,7 @@
                   </a>
               </span>
               
-              <span class="link-block">
+              <!-- <span class="link-block">
                 <a href="https://mp.weixin.qq.com/s/p1WTlfR4bcsh5EQhbjuayg"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -192,7 +189,7 @@
                   </span>
                   <span>知乎文章(in Chinese)</span>
                 </a>
-              </span>
+              </span> -->
               <!-- Dataset Link. -->
               <!-- <span class="link-block">
                 <a href="https://github.com/google/nerfies/releases/tag/0.1"
@@ -225,16 +222,18 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
+        <h2 class="title is-3">Overview</h2>
         <div class="content has-text-justified">
           <p>
             Vision-language-action (VLA) models have shown promise on task-conditioned control in complex settings such as bimanual manipulation.
-            However, the heavy reliance on task-specific human demonstrations limits their generalization and incurs high data acquisition costs.
-            We present a new notion of <em>task-agnostic action </em> paradigm that decouples action execution from task-specific conditioning, enhancing scalability, efficiency, and cost-effectiveness.
+            However, <strong>the heavy reliance on task-specific human demonstrations</strong> limits their generalization and incurs <strong>high data acquisition costs</strong>.
+            We present a new notion of <strong><em>task-agnostic action </em></strong> paradigm that <strong>decouples action execution from task-specific conditioning</strong>, enhancing scalability, efficiency, and cost-effectiveness.
+            By using vision-generation model for future observation prediction and a downstream inverse dynamics model (IDM) for action regression, we can achieve <strong>exceptional generalization capability</strong> and <strong>remarkable data efficiency</strong>.
             To be specific, we introduce <strong>VIDAR</strong>, a foundation video model for future action prediction,
             and <strong>AnyPos</strong>, an inverse dynamics model equipped with Arm-Decoupled Estimation and a Direction-Aware Decoder (DAD) that is able to learn from task-agnostic data.
-            To address the data collection challenge, we introduce <strong>ATARA</strong>(Automated Task-AgnosticRandom Actions), a novel data collection framework that automatically generates large-scale task-agnostic actions for bimanual manipulation efficiently.
-            Our experiments demonstrate that with only 20 minutes of human demonstrations on an unseen robot platform (1% of typical data requirement), our pipeline can generalize to unseen tasks and backgrounds with strong semantic understanding, surpassing state-of-the-art method.
+            To address the data collection challenge, we introduce <strong>ATARA</strong> (Automated Task-AgnosticRandom Actions), a novel data collection framework that automatically generates large-scale task-agnostic actions for bimanual manipulation efficiently. 
+            <strong>Large-scale human demonstrations are no longer required, and the data collection process can be automated</strong>.
+            Our experiments demonstrate that <strong>with only 20 minutes of human demonstrations on an unseen robot platform</strong> (1% of typical data requirement), our pipeline can generalize to unseen tasks and backgrounds with strong semantic understanding, surpassing state-of-the-art method.
           </p>
         </div>
       </div>
@@ -268,7 +267,7 @@
         <div class="content has-text-justified">
           <p>
             VIDAR is a foundation video diffusion model for video prediction and masked inverse dynamics model (MIDM) for action regression.
-            It is trained on 750K multi-view bimanual videos with test-time scaling (TTS) applied during testing, VIDAR can adapt to new robot platforms with 20 minutes of demonstrations with state-of-the-art performance and generalize to unseen tasks with strong semantic understanding.
+            It is trained on 750K multi-view bimanual videos with test-time scaling (TTS) applied during testing, VIDAR can adapt to new robot platforms <strong>with only 20 minutes of demonstrations</strong> with state-of-the-art performance and generalize to unseen tasks with strong semantic understanding.
           </p>
         </div>
 
@@ -278,9 +277,9 @@
           <ul>
             <li><strong>Video Generation Model:</strong> Rectified flow models with emboided pre-training and fine-tuning on unified observation space.</li>
             <li><strong>Masked Inverse Dynamics Model (MIDM):</strong> 
-              Inverse dynamics models often suffer from poor generalization due to the presence of background noise, texture biases, and visual distractions in high-dimensional observation, while MIDM can focus on task-relevent regions via implicit mask prediction.
+              Inverse dynamics models often suffer from poor generalization due to the presence of background noise, texture biases, and visual distractions in high-dimensional observation, while MIDM can focus on task-relevent regions of the input frame via implicit mask prediction.
             </li>
-            <li><strong>Test-Time Scaling (TTS):</strong> We generate <em>K</em> candidate video trajectories using different random seeds. Then rank these trajectories using a pretrained evaluator(e.g., CLIP or a vision-language model) and select the one which scores the highest.</li>
+            <li><strong>Test-Time Scaling (TTS):</strong> We generate <em>K</em> candidate video trajectories using different random seeds. Then rank these trajectories using a pretrained evaluator (e.g., CLIP or a vision-language model) and select the one which scores the highest.</li>
           </ul>
         </div>
         
@@ -305,8 +304,8 @@
 
         <div class="content has-text-justified">
           <p>
-            AnyPos is a robot-specific image-to-action model trained entirely on task-agnostic trajectories sampled by ATARA. It integrates two key techniques to enhance performance: <strong>Arm-Decoupled Estimation</strong> and <strong>Direction-Aware Decoder (DAD)</strong>.
-            Together, ATARA and AnyPos constitute a fully task-agnostic framework for training IDMs without goal supervision.
+            AnyPos is a robot-specific image-to-action model <strong>trained entirely on task-agnostic trajectories sampled by ATARA</strong>. It integrates two key techniques to enhance performance: <strong>Arm-Decoupled Estimation</strong> and <strong>Direction-Aware Decoder (DAD)</strong>.
+            Together, ATARA and AnyPos constitute <strong>a fully task-agnostic framework for training IDMs without goal supervision</strong>.
             By combining scalable unsupervised data collection with physically informed learning architectures, our approach demonstrates that task-agnostic action data can serve as a practical and powerful foundation for generalizable manipulation.
           </p>
         </div>
@@ -317,10 +316,18 @@
           <ul>
             <li><strong>ATARA:</strong> A reinforcement learning framework that constructs a coverage-aware mapping from end-effector space to joint space. Therefore, it enables efficient task-agnostic data generation that preserves inherently encoded robot embodiment information and broad behavioral coverage, serving as a reusable prior for downstream policy learning.</li>
             <li><strong>Arm-Decoupled Estimation:</strong> 
-            We observe that when estimating left arm joints, the model often attends to visual features of the right arm, and vice versa. To mitigate this, we isolate the input features per arm. We (1)split the left and right arms in the observation <em>x</em>, then (2)use two sub-networks estimate joint positions for each arm independently. Gripper poses are estimated by specialized networks. This decoupling reduces the visual hypothesis space, improves estimation accuracy, and enables specialization per arm.
+            We observe that when estimating left arm joints, the model often attends to visual features of the right arm, and vice versa. To mitigate this, we isolate the input features per arm. We (1) split the left and right arms in the observation <em>x</em>, then (2) use two sub-networks estimate joint positions for each arm independently. Gripper poses are estimated by specialized networks. This decoupling reduces the visual hypothesis space, improves estimation accuracy, and enables specialization per arm.
             </li>
-            <li><strong>Direction-Aware Decoder(DAD):</strong> For action estimation networks, we choose DINOv2 with register (DINOv2-Reg) as the visual encoder, and uses three core componets to meet the high-precision requirement for action prediction: (1)Multi-Scale Dilated Convolutions (2)Deformable Convolutions (3)Angle-Sensitive Pooling</li>
+            <li><strong>Direction-Aware Decoder (DAD):</strong> For action estimation networks, we choose DINOv2 with register (DINOv2-Reg) as the visual encoder, and uses three core componets to meet the high-precision requirement for action prediction: (1) Multi-Scale Dilated Convolutions (2) Deformable Convolutions (3) Angle-Sensitive Pooling</li>
           </ul>
+        </div>
+
+        <!-- pic -->
+        <div class="has-text-centered my-5">
+          <figure class="image">
+            <img src="/assets/pdfs/anypos_method.svg" alt="VIDAR Architecture" style="max-width: 120%; height: auto;">
+          </figure>
+          <p class="has-text-grey is-size-7">Figure 3: Illustration of AnyPos. We obtain a task-agnostic training dataset covering the entire cubic workspace of dual robotic arms using ATARA. </p>
         </div>
 
       </div>
