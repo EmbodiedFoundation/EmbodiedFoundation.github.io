@@ -293,7 +293,7 @@
           <figure class="image">
             <img src="./assets/pdfs/vidar.svg" alt="VIDAR Architecture" style="max-width: 120%; height: auto;">
           </figure>
-          <p class="has-text-grey is-size-6">Figure 1: Overview of VIDAR.</p>
+          <p class="has-text-grey is-size-6">Figure: Overview of VIDAR.</p>
         </div>
         
         <div class="content has-text-justified">
@@ -307,13 +307,13 @@
           <figure class="image">
             <img src="./assets/pdfs/VIDAR_methods.png" alt="VIDAR Methods" style="max-width: 120%; height: auto;">
           </figure>
-          <p class="has-text-grey is-size-6">Figure 2: Methods of VIDAR.</p>
+          <p class="has-text-grey is-size-6">Figure: Methods of VIDAR.</p>
         </div>
         <!-- Key Techniques -->
         <div class="content has-text-justified">
           <h3 class="title is-4">Key Techniques</h3>
           <ul>
-            <li><strong>Video Generation Model:</strong> Rectified flow models with emboided pre-training and fine-tuning on unified observation space.</li>
+            <li><strong>Video Generation Model:</strong> Rectified flow models with internet-videos pre-training, emboided pre-training and fine-tuning on unified observation space.</li>
             <li><strong>Masked Inverse Dynamics Model (MIDM):</strong> 
               Inverse dynamics models often suffer from poor generalization due to the presence of background noise, texture biases, and visual distractions in high-dimensional observation, while MIDM can focus on task-relevent regions of the input frame via implicit mask prediction.
             </li>
@@ -326,6 +326,8 @@
   </div>
 </section>
 
+
+
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
@@ -335,9 +337,9 @@
         <!-- pic -->
         <div class="has-text-centered my-5">
           <figure class="image">
-            <img src="./assets/pdfs/anypos.svg" alt="VIDAR Architecture" style="max-width: 120%; height: auto;">
+            <img src="./assets/vidar_anypos/anypos_header.png" alt="Overview of AnyPos" style="max-width: 120%; height: auto;">
           </figure>
-          <p class="has-text-grey is-size-6">Figure 3: Overview of AnyPos.</p>
+          <p class="has-text-grey is-size-6">Figure: Overview of AnyPos.</p>
         </div>
 
         <div class="content has-text-justified">
@@ -346,8 +348,18 @@
             Together, ATARA and AnyPos constitute <strong>a fully task-agnostic framework for training IDMs without goal supervision</strong>.
             By combining scalable unsupervised data collection with physically informed learning architectures, our approach demonstrates that task-agnostic action data can serve as a practical and powerful foundation for generalizable manipulation.
           </p>
+          <p>
+            Our AnyPos method achieves 57.13% action prediction accuracy on the test set, which includes unseen skills and objects, surpassing previous approaches (naïve ResNet+MLP used in unipi, unisim, robodreamer, and susie) by <strong>51%</strong>. In real-world robot replay tests, AnyPos-ATARA demonstrates 92.59% task success rate (as shown in the figure below), representing a <strong>33%</strong> improvement over the human-collected dataset, and surpassing previous approaches by 44% (as shown in the Figure of "Overview of AnyPos").
+          </p>
         </div>
         
+        <!-- pic -->
+        <div class="has-text-centered my-5">
+          <figure class="image">
+            <img src="./assets/vidar_anypos/anypos_atara_replay.png" alt="The objective of VLAs" style="max-width: 120%; height: auto;">
+          </figure>
+          <p class="has-text-grey is-size-6">Figure: The results of AnyPos-ATARA with video replay to accomplish various manipulation tasks.</p>
+        </div>
         
         <div class="content has-text-justified">
           <h3 class="title is-4">ATARA: Automatically collect data of target robots! (4x speed)</h3>
@@ -360,19 +372,74 @@
             </video>
           </div>
         </div>
-
-        <!-- pic -->
-        <div class="has-text-centered my-5">
-          <figure class="image">
-            <img src="./assets/pdfs/anypos_method.svg" alt="VIDAR Architecture" style="max-width: 120%; height: auto;">
-          </figure>
-          <p class="has-text-grey is-size-6">Figure 4: Methods of AnyPos. We obtain a task-agnostic training dataset covering the entire cubic workspace of dual robotic arms using ATARA. </p>
+        
+        <div class="content has-text-justified">
+          <h3 class="title is-3">Task-Agnostic Action</h3>
+          
+          <div class="content has-text-justified">
+            <p>
+              Standard VLA models learn temporally extended policies 
+              <math alttext="p_{\theta}(\bm{a}_{T+1:T+t}|\bm{x}_{T-H+1:T},\mathbf{l})" class="ltx_Math" display="inline" id="S3.SS1.p1.7.m7.2"><semantics id="S3.SS1.p1.7.m7.2a"><mrow id="S3.SS1.p1.7.m7.2.2" xref="S3.SS1.p1.7.m7.2.2.cmml"><msub id="S3.SS1.p1.7.m7.2.2.3" xref="S3.SS1.p1.7.m7.2.2.3.cmml"><mi id="S3.SS1.p1.7.m7.2.2.3.2" xref="S3.SS1.p1.7.m7.2.2.3.2.cmml">p</mi><mi id="S3.SS1.p1.7.m7.2.2.3.3" xref="S3.SS1.p1.7.m7.2.2.3.3.cmml">θ</mi></msub><mo id="S3.SS1.p1.7.m7.2.2.2" xref="S3.SS1.p1.7.m7.2.2.2.cmml">⁢</mo><mrow id="S3.SS1.p1.7.m7.2.2.1.1" xref="S3.SS1.p1.7.m7.2.2.1.1.1.cmml"><mo id="S3.SS1.p1.7.m7.2.2.1.1.2" stretchy="false" xref="S3.SS1.p1.7.m7.2.2.1.1.1.cmml">(</mo><mrow id="S3.SS1.p1.7.m7.2.2.1.1.1" xref="S3.SS1.p1.7.m7.2.2.1.1.1.cmml"><msub id="S3.SS1.p1.7.m7.2.2.1.1.1.3" xref="S3.SS1.p1.7.m7.2.2.1.1.1.3.cmml"><mi id="S3.SS1.p1.7.m7.2.2.1.1.1.3.2" xref="S3.SS1.p1.7.m7.2.2.1.1.1.3.2.cmml">𝒂</mi><mrow id="S3.SS1.p1.7.m7.2.2.1.1.1.3.3" xref="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.cmml"><mrow id="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.2" xref="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.2.cmml"><mi id="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.2.2" xref="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.2.2.cmml">T</mi><mo id="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.2.1" xref="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.2.1.cmml">+</mo><mn id="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.2.3" xref="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.2.3.cmml">1</mn></mrow><mo id="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.1" lspace="0.278em" rspace="0.278em" xref="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.1.cmml">:</mo><mrow id="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.3" xref="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.3.cmml"><mi id="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.3.2" xref="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.3.2.cmml">T</mi><mo id="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.3.1" xref="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.3.1.cmml">+</mo><mi id="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.3.3" xref="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.3.3.cmml">t</mi></mrow></mrow></msub><mo fence="false" id="S3.SS1.p1.7.m7.2.2.1.1.1.2" xref="S3.SS1.p1.7.m7.2.2.1.1.1.2.cmml">|</mo><mrow id="S3.SS1.p1.7.m7.2.2.1.1.1.1.1" xref="S3.SS1.p1.7.m7.2.2.1.1.1.1.2.cmml"><msub id="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1" xref="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.cmml"><mi id="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.2" xref="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.2.cmml">𝒙</mi><mrow id="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3" xref="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.cmml"><mrow id="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.2" xref="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.2.cmml"><mrow id="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.2.2" xref="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.2.2.cmml"><mi id="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.2.2.2" xref="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.2.2.2.cmml">T</mi><mo id="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.2.2.1" xref="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.2.2.1.cmml">−</mo><mi id="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.2.2.3" xref="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.2.2.3.cmml">H</mi></mrow><mo id="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.2.1" xref="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.2.1.cmml">+</mo><mn id="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.2.3" xref="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.2.3.cmml">1</mn></mrow><mo id="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.1" lspace="0.278em" rspace="0.278em" xref="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.1.cmml">:</mo><mi id="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.3" xref="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.3.cmml">T</mi></mrow></msub><mo id="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.2" xref="S3.SS1.p1.7.m7.2.2.1.1.1.1.2.cmml">,</mo><mi id="S3.SS1.p1.7.m7.1.1" xref="S3.SS1.p1.7.m7.1.1.cmml">𝐥</mi></mrow></mrow><mo id="S3.SS1.p1.7.m7.2.2.1.1.3" stretchy="false" xref="S3.SS1.p1.7.m7.2.2.1.1.1.cmml">)</mo></mrow></mrow><annotation-xml encoding="MathML-Content" id="S3.SS1.p1.7.m7.2b"><apply id="S3.SS1.p1.7.m7.2.2.cmml" xref="S3.SS1.p1.7.m7.2.2"><times id="S3.SS1.p1.7.m7.2.2.2.cmml" xref="S3.SS1.p1.7.m7.2.2.2"></times><apply id="S3.SS1.p1.7.m7.2.2.3.cmml" xref="S3.SS1.p1.7.m7.2.2.3"><csymbol cd="ambiguous" id="S3.SS1.p1.7.m7.2.2.3.1.cmml" xref="S3.SS1.p1.7.m7.2.2.3">subscript</csymbol><ci id="S3.SS1.p1.7.m7.2.2.3.2.cmml" xref="S3.SS1.p1.7.m7.2.2.3.2">𝑝</ci><ci id="S3.SS1.p1.7.m7.2.2.3.3.cmml" xref="S3.SS1.p1.7.m7.2.2.3.3">𝜃</ci></apply><apply id="S3.SS1.p1.7.m7.2.2.1.1.1.cmml" xref="S3.SS1.p1.7.m7.2.2.1.1"><csymbol cd="latexml" id="S3.SS1.p1.7.m7.2.2.1.1.1.2.cmml" xref="S3.SS1.p1.7.m7.2.2.1.1.1.2">conditional</csymbol><apply id="S3.SS1.p1.7.m7.2.2.1.1.1.3.cmml" xref="S3.SS1.p1.7.m7.2.2.1.1.1.3"><csymbol cd="ambiguous" id="S3.SS1.p1.7.m7.2.2.1.1.1.3.1.cmml" xref="S3.SS1.p1.7.m7.2.2.1.1.1.3">subscript</csymbol><ci id="S3.SS1.p1.7.m7.2.2.1.1.1.3.2.cmml" xref="S3.SS1.p1.7.m7.2.2.1.1.1.3.2">𝒂</ci><apply id="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.cmml" xref="S3.SS1.p1.7.m7.2.2.1.1.1.3.3"><ci id="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.1.cmml" xref="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.1">:</ci><apply id="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.2.cmml" xref="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.2"><plus id="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.2.1.cmml" xref="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.2.1"></plus><ci id="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.2.2.cmml" xref="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.2.2">𝑇</ci><cn id="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.2.3.cmml" type="integer" xref="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.2.3">1</cn></apply><apply id="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.3.cmml" xref="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.3"><plus id="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.3.1.cmml" xref="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.3.1"></plus><ci id="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.3.2.cmml" xref="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.3.2">𝑇</ci><ci id="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.3.3.cmml" xref="S3.SS1.p1.7.m7.2.2.1.1.1.3.3.3.3">𝑡</ci></apply></apply></apply><list id="S3.SS1.p1.7.m7.2.2.1.1.1.1.2.cmml" xref="S3.SS1.p1.7.m7.2.2.1.1.1.1.1"><apply id="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.cmml" xref="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1"><csymbol cd="ambiguous" id="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.1.cmml" xref="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1">subscript</csymbol><ci id="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.2.cmml" xref="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.2">𝒙</ci><apply id="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.cmml" xref="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3"><ci id="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.1.cmml" xref="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.1">:</ci><apply id="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.2.cmml" xref="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.2"><plus id="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.2.1.cmml" xref="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.2.1"></plus><apply id="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.2.2.cmml" xref="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.2.2"><minus id="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.2.2.1.cmml" xref="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.2.2.1"></minus><ci id="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.2.2.2.cmml" xref="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.2.2.2">𝑇</ci><ci id="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.2.2.3.cmml" xref="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.2.2.3">𝐻</ci></apply><cn id="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.2.3.cmml" type="integer" xref="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.2.3">1</cn></apply><ci id="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.3.cmml" xref="S3.SS1.p1.7.m7.2.2.1.1.1.1.1.1.3.3">𝑇</ci></apply></apply><ci id="S3.SS1.p1.7.m7.1.1.cmml" xref="S3.SS1.p1.7.m7.1.1">𝐥</ci></list></apply></apply></annotation-xml><annotation encoding="application/x-tex" id="S3.SS1.p1.7.m7.2c">p_{\theta}(\bm{a}_{T+1:T+t}|\bm{x}_{T-H+1:T},\mathbf{l})</annotation><annotation encoding="application/x-llamapun" id="S3.SS1.p1.7.m7.2d">italic_p start_POSTSUBSCRIPT italic_θ end_POSTSUBSCRIPT ( bold_italic_a start_POSTSUBSCRIPT italic_T + 1 : italic_T + italic_t end_POSTSUBSCRIPT | bold_italic_x start_POSTSUBSCRIPT italic_T - italic_H + 1 : italic_T end_POSTSUBSCRIPT , bold_l )</annotation></semantics></math>
+              , where
+              <math alttext="\theta" class="ltx_Math" display="inline" id="S3.SS1.p1.8.m8.1"><semantics id="S3.SS1.p1.8.m8.1a"><mi id="S3.SS1.p1.8.m8.1.1" xref="S3.SS1.p1.8.m8.1.1.cmml">θ</mi><annotation-xml encoding="MathML-Content" id="S3.SS1.p1.8.m8.1b"><ci id="S3.SS1.p1.8.m8.1.1.cmml" xref="S3.SS1.p1.8.m8.1.1">𝜃</ci></annotation-xml><annotation encoding="application/x-tex" id="S3.SS1.p1.8.m8.1c">\theta</annotation><annotation encoding="application/x-llamapun" id="S3.SS1.p1.8.m8.1d">italic_θ</annotation></semantics></math>
+              represents the parameters of the VLA policy, T  is the current timestep and H  denotes the history window size, mapping observation histories and language commands to action sequences.
+              Given an expert dataset <math alttext="D_{\text{expert}}" class="ltx_Math" display="inline" id="S3.SS1.p1.11.m11.1"><semantics id="S3.SS1.p1.11.m11.1a"><msub id="S3.SS1.p1.11.m11.1.1" xref="S3.SS1.p1.11.m11.1.1.cmml"><mi id="S3.SS1.p1.11.m11.1.1.2" xref="S3.SS1.p1.11.m11.1.1.2.cmml">D</mi><mtext id="S3.SS1.p1.11.m11.1.1.3" xref="S3.SS1.p1.11.m11.1.1.3a.cmml">expert</mtext></msub><annotation-xml encoding="MathML-Content" id="S3.SS1.p1.11.m11.1b"><apply id="S3.SS1.p1.11.m11.1.1.cmml" xref="S3.SS1.p1.11.m11.1.1"><csymbol cd="ambiguous" id="S3.SS1.p1.11.m11.1.1.1.cmml" xref="S3.SS1.p1.11.m11.1.1">subscript</csymbol><ci id="S3.SS1.p1.11.m11.1.1.2.cmml" xref="S3.SS1.p1.11.m11.1.1.2">𝐷</ci><ci id="S3.SS1.p1.11.m11.1.1.3a.cmml" xref="S3.SS1.p1.11.m11.1.1.3"><mtext id="S3.SS1.p1.11.m11.1.1.3.cmml" mathsize="70%" xref="S3.SS1.p1.11.m11.1.1.3">expert</mtext></ci></apply></annotation-xml><annotation encoding="application/x-tex" id="S3.SS1.p1.11.m11.1c">D_{\text{expert}}</annotation><annotation encoding="application/x-llamapun" id="S3.SS1.p1.11.m11.1d">italic_D start_POSTSUBSCRIPT expert end_POSTSUBSCRIPT</annotation></semantics></math> 
+              , the training objective of VLAs is to maximize the likelihood:
+            </p>
+  
+            <!-- pic -->
+            <div class="has-text-centered my-5">
+              <figure class="image">
+                <img src="./assets/vidar_anypos/vla_distri.png" alt="The objective of VLAs" style="max-width: 120%; height: auto;">
+              </figure>
+              <p class="has-text-grey is-size-6">Figure 3: The objective of VLAs.</p>
+            </div>
+          </div>
+          
+          
+          <div class="content has-text-justified">
+            Here, all actions are task-dependent, i.e., <strong>Task-Specific Actions</strong>. The vastness of task language instructions and action spaces creates an enormous demand for action data in Vision-Language-Action (VLA) models. <br>
+            In scenarios where robotic actions are position-controlled, the above formulation can be decomposed into a "future video prediction problem" and an "action execution problem." This enables the <strong>decoupling of the action modality from the embodied foundation model</strong>, shifting the requirement for high generalizability to the data-rich vision-language modality. Through our derivation, we propose the concept of Task-Agnostic Action, which significantly simplifies the learning of the action modality:
+          </div>
+  
+          <div class="has-text-centered my-5">
+            <figure class="image">
+              <img src="./assets/vidar_anypos/ours_distri.png" alt="Decompsing task-specific action." style="max-width: 120%; height: auto;">
+            </figure>
+            <p class="has-text-grey is-size-6">Figure 4: Decompsing task-specific action.</p>
+          </div>
+          <!-- Key Techniques -->
+          <div class="content has-text-justified">
+            <h3 class="title is-4">Benefits of task-agnostic action paradigm</h3>
+            <ol>
+              <li>
+                <strong>Data Efficiency and Reusable Motor Skills</strong>: Task-agnostic training avoids costly task-specific demonstrations, enabling large-scale unsupervised data collection. The inverse dynamics model (IDM), which learns a universal action prior  <math alttext="p(\bm{a}_{i}\mid\bm{x}_{i})" class="ltx_Math" display="inline" id="S3.SS1.p4.1.m1.1"><semantics id="S3.SS1.p4.1.m1.1a"><mrow id="S3.SS1.p4.1.m1.1.1" xref="S3.SS1.p4.1.m1.1.1.cmml"><mi id="S3.SS1.p4.1.m1.1.1.3" xref="S3.SS1.p4.1.m1.1.1.3.cmml">p</mi><mo id="S3.SS1.p4.1.m1.1.1.2" xref="S3.SS1.p4.1.m1.1.1.2.cmml">⁢</mo><mrow id="S3.SS1.p4.1.m1.1.1.1.1" xref="S3.SS1.p4.1.m1.1.1.1.1.1.cmml"><mo id="S3.SS1.p4.1.m1.1.1.1.1.2" stretchy="false" xref="S3.SS1.p4.1.m1.1.1.1.1.1.cmml">(</mo><mrow id="S3.SS1.p4.1.m1.1.1.1.1.1" xref="S3.SS1.p4.1.m1.1.1.1.1.1.cmml"><msub id="S3.SS1.p4.1.m1.1.1.1.1.1.2" xref="S3.SS1.p4.1.m1.1.1.1.1.1.2.cmml"><mi id="S3.SS1.p4.1.m1.1.1.1.1.1.2.2" xref="S3.SS1.p4.1.m1.1.1.1.1.1.2.2.cmml">𝒂</mi><mi id="S3.SS1.p4.1.m1.1.1.1.1.1.2.3" xref="S3.SS1.p4.1.m1.1.1.1.1.1.2.3.cmml">i</mi></msub><mo id="S3.SS1.p4.1.m1.1.1.1.1.1.1" xref="S3.SS1.p4.1.m1.1.1.1.1.1.1.cmml">∣</mo><msub id="S3.SS1.p4.1.m1.1.1.1.1.1.3" xref="S3.SS1.p4.1.m1.1.1.1.1.1.3.cmml"><mi id="S3.SS1.p4.1.m1.1.1.1.1.1.3.2" xref="S3.SS1.p4.1.m1.1.1.1.1.1.3.2.cmml">𝒙</mi><mi id="S3.SS1.p4.1.m1.1.1.1.1.1.3.3" xref="S3.SS1.p4.1.m1.1.1.1.1.1.3.3.cmml">i</mi></msub></mrow><mo id="S3.SS1.p4.1.m1.1.1.1.1.3" stretchy="false" xref="S3.SS1.p4.1.m1.1.1.1.1.1.cmml">)</mo></mrow></mrow><annotation-xml encoding="MathML-Content" id="S3.SS1.p4.1.m1.1b"><apply id="S3.SS1.p4.1.m1.1.1.cmml" xref="S3.SS1.p4.1.m1.1.1"><times id="S3.SS1.p4.1.m1.1.1.2.cmml" xref="S3.SS1.p4.1.m1.1.1.2"></times><ci id="S3.SS1.p4.1.m1.1.1.3.cmml" xref="S3.SS1.p4.1.m1.1.1.3">𝑝</ci><apply id="S3.SS1.p4.1.m1.1.1.1.1.1.cmml" xref="S3.SS1.p4.1.m1.1.1.1.1"><csymbol cd="latexml" id="S3.SS1.p4.1.m1.1.1.1.1.1.1.cmml" xref="S3.SS1.p4.1.m1.1.1.1.1.1.1">conditional</csymbol><apply id="S3.SS1.p4.1.m1.1.1.1.1.1.2.cmml" xref="S3.SS1.p4.1.m1.1.1.1.1.1.2"><csymbol cd="ambiguous" id="S3.SS1.p4.1.m1.1.1.1.1.1.2.1.cmml" xref="S3.SS1.p4.1.m1.1.1.1.1.1.2">subscript</csymbol><ci id="S3.SS1.p4.1.m1.1.1.1.1.1.2.2.cmml" xref="S3.SS1.p4.1.m1.1.1.1.1.1.2.2">𝒂</ci><ci id="S3.SS1.p4.1.m1.1.1.1.1.1.2.3.cmml" xref="S3.SS1.p4.1.m1.1.1.1.1.1.2.3">𝑖</ci></apply><apply id="S3.SS1.p4.1.m1.1.1.1.1.1.3.cmml" xref="S3.SS1.p4.1.m1.1.1.1.1.1.3"><csymbol cd="ambiguous" id="S3.SS1.p4.1.m1.1.1.1.1.1.3.1.cmml" xref="S3.SS1.p4.1.m1.1.1.1.1.1.3">subscript</csymbol><ci id="S3.SS1.p4.1.m1.1.1.1.1.1.3.2.cmml" xref="S3.SS1.p4.1.m1.1.1.1.1.1.3.2">𝒙</ci><ci id="S3.SS1.p4.1.m1.1.1.1.1.1.3.3.cmml" xref="S3.SS1.p4.1.m1.1.1.1.1.1.3.3">𝑖</ci></apply></apply></apply></annotation-xml><annotation encoding="application/x-tex" id="S3.SS1.p4.1.m1.1c">p(\bm{a}_{i}\mid\bm{x}_{i})</annotation><annotation encoding="application/x-llamapun" id="S3.SS1.p4.1.m1.1d">italic_p ( bold_italic_a start_POSTSUBSCRIPT italic_i end_POSTSUBSCRIPT ∣ bold_italic_x start_POSTSUBSCRIPT italic_i end_POSTSUBSCRIPT )</annotation></semantics></math>
+                , acts as a shared motor skill library for diverse tasks.
+              </li>
+              <li><strong>Zero-Shot Task Generalization:</strong> 
+                The IDM models task-independent action priors, allowing generalization to new tasks by adapting only the video generation model (e.g., via language prompts) without IDM retraining.
+              </li>
+              <li><strong>Decoupled Planning and Low-Level Control:</strong> 
+                High-level planning (e.g., "open the drawer") is handled by a video generation model, while the IDM executes the visual trajectories. This modular approach simplifies policy design by framing manipulation as an vision-space prediction problem.
+              </li>
+            </ol>
+          </div>
+          
         </div>
+
         <!-- Key Techniques -->
         <div class="content has-text-justified">
           <h3 class="title is-4">Key Techniques</h3>
+          
+        <!-- pic -->
+        <div class="has-text-centered my-5">
+          <figure class="image">
+            <img src="./assets/vidar_anypos/anypos_methods.png" alt="Methods of AnyPos" style="max-width: 120%; height: auto;">
+          </figure>
+          <p class="has-text-grey is-size-6">Figure: Methods of AnyPos. We obtain a task-agnostic training dataset covering the entire cubic workspace of dual robotic arms using ATARA. </p>
+        </div>
           <ul>
-            <li><strong>ATARA:</strong> As shown in Figure 4, naïve joint-space sampling often results in inefficient coverage of reachable states, redundant or degenerate motions (e.g., arms exiting the field of view), and frequent self-collisions. To address these limitations, we propose ATARA, a reinforcement learning framework that constructs a coverage-aware mapping from end-effector space to joint space. Therefore, it enables efficient task-agnostic data generation that preserves inherently encoded robot embodiment information and broad behavioral coverage, serving as a reusable prior for downstream policy learning.</li>
+            <li><strong>ATARA:</strong> As shown in the Figure of "Methods of AnyPos", naïve joint-space sampling often results in inefficient coverage of reachable states, redundant or degenerate motions (e.g., arms exiting the field of view), and frequent self-collisions. To address these limitations, we propose ATARA, a reinforcement learning framework that constructs a coverage-aware mapping from end-effector space to joint space. Therefore, it enables efficient task-agnostic data generation that preserves inherently encoded robot embodiment information and broad behavioral coverage, serving as a reusable prior for downstream policy learning.</li>
             <li><strong>Arm-Decoupled Estimation:</strong> 
             We observe that when estimating left arm joints, the model often attends to visual features of the right arm, and vice versa. To mitigate this, we isolate the input features per arm. We (1) split the left and right arms in the observation <em>x</em>, then (2) use two sub-networks estimate joint positions for each arm independently. Gripper poses are estimated by specialized networks. This decoupling reduces the visual hypothesis space, improves estimation accuracy, and enables specialization per arm.
             </li>
