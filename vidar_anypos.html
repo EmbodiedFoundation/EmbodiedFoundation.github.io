@@ -88,7 +88,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Embodied Video Foundation Model: VIDAR & AnyPos</h1>
+          <h1 class="title is-1 publication-title">Embodied Video Foundation Model: Vidar & AnyPos</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://yaofeng1998.github.io">Yao Feng</a>*<sup>1</sup>,
@@ -147,7 +147,7 @@
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
                   </span>
-                  <span>VIDAR arXiv</span>
+                  <span>Vidar arXiv</span>
                 </a>
               </span>
               <span class="link-block">
@@ -177,7 +177,7 @@
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
-                  <span>VIDAR</span>
+                  <span>Vidar</span>
                   </a>
               </span>
 
@@ -191,23 +191,13 @@
                   </a>
               </span>
 
-              <span class="link-block">
-              <a href="https://huggingface.co/datasets/embodiedfoundation/ATARA"
-                  class="external-link button is-normal is-rounded is-dark">
-                <span class="icon" style="font-size: 1.2em;">
-                  🤗
-                </span>
-                <span>ATARA Dataset</span>
-              </a>
-            </span>
-
             <span class="link-block">
-              <a href="https://huggingface.co/embodiedfoundation/VIDAR"
+              <a href="https://huggingface.co/embodiedfoundation/Vidar"
                 class="external-link button is-normal is-rounded is-dark">
                 <span class="icon" style="font-size: 1.2em;">
                   🤗
                 </span>
-                <span>VIDAR</span>
+                <span>Vidar</span>
               </a>
             </span>
 
@@ -218,6 +208,16 @@
                   🤗
                 </span>
                 <span>AnyPos</span>
+              </a>
+            </span>
+
+            <span class="link-block">
+              <a href="https://huggingface.co/datasets/embodiedfoundation/ATARA"
+                  class="external-link button is-normal is-rounded is-dark">
+                <span class="icon" style="font-size: 1.2em;">
+                  🤗
+                </span>
+                <span>ATARA Dataset</span>
               </a>
             </span>
               
@@ -272,7 +272,7 @@
 
 <div class="video-container mb-6" style="display: flex; justify-content: center;">
   <video controls autoplay muted loop width="100%" style="max-width: 800px;">
-    <!-- <source src="{{ '/assets/videos/VIDAR_AnyPos.mp4' | relative_url }}" type="video/mp4"> -->
+    <!-- <source src="{{ '/assets/videos/Vidar_AnyPos.mp4' | relative_url }}" type="video/mp4"> -->
     <source src="./assets/videos/demo.mp4"
                     type="video/mp4">
     <p>Your browser doesn't support HTML5 video. Here is a <a href="{{ '/assets/videos/demo.mp4' | relative_url }}">link to the video</a> instead.</p>
@@ -304,13 +304,13 @@
                 By using a vision-generation model for future observation prediction and a downstream inverse dynamics model (IDM) for action regression, we can achieve <strong>exceptional generalization capability</strong> and <strong>remarkable data efficiency</strong>.
               </li>
               <li>
-                <strong>VIDAR</strong> (VIdeo Diffusion for Action Reasoning) is a two-stage framework that leverages a large-scale, diffusion-based video pre-training model and a novel masked inverse dynamics model (MIDM) for action prediction, which can be generalized to an unseen robot platform <strong>with only 20 minutes of human demonstrations</strong>.
+                <strong>Vidar</strong> (Video Diffusion for Action Reasoning) is a two-stage framework that leverages a large-scale, diffusion-based video pre-training model and a novel Masked Inverse Dynamics Model (MIDM) for action prediction, which can be generalized to an unseen robot platform <strong>with only 20 minutes of human demonstrations</strong>.
               </li>
               <li>
                 <strong>AnyPos</strong> is another inverse dynamics model equipped with Arm-Decoupled Estimation and a Direction-Aware Decoder (DAD) that <strong>is able to learn from ATARA-generated task-agnostic data</strong>. Therefore, ATARA and AnyPos constitute a fully task-agnostic framework for training IDMs <strong>without goal supervision</strong>.
               </li>
               <li>
-                Our experiments demonstrate that our VIDAR framework can generalize to unseen tasks and backgrounds with strong semantic understanding, surpassing state-of-the-art methods like VPP and UniPi.
+                Our experiments demonstrate that our Vidar framework can generalize to unseen tasks and backgrounds with strong semantic understanding, surpassing state-of-the-art methods like VPP and UniPi.
               </li>
               <li>
                 We additionally integrate a video-conditioned action validation module to verify the feasibility of learned policies across diverse manipulation tasks, and we demonstrate that the AnyPos-ATARA pipeline yields a <strong>51% improvement</strong> in test accuracy and achieves <strong>30-40% higher success rates</strong> in downstream tasks such as lifting, pick-and-place, and clicking, using replay-based video validation.
@@ -329,27 +329,27 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">VIDAR: VIdeo Diffusion for Action Reasoning</h2>
+        <h2 class="title is-3">Vidar: Video Diffusion for Action Reasoning</h2>
         <!-- pic -->
         <div class="has-text-centered my-5">
           <figure class="image">
-            <img src="./assets/pdfs/vidar.svg" alt="VIDAR Architecture" style="max-width: 120%; height: auto;">
+            <img src="./assets/pdfs/Vidar.png" alt="Vidar Architecture" style="max-width: 120%; height: auto;">
           </figure>
-          <p class="has-text-grey is-size-6">Figure: Overview of VIDAR.</p>
+          <p class="has-text-grey is-size-6">Figure: Overview of Vidar.</p>
         </div>
         
         <div class="content has-text-justified">
           <p>
-            VIDAR includes a foundation video diffusion model for video prediction and a masked inverse dynamics model (MIDM) for action regression.
+            Vidar includes a video diffusion foundation model for video prediction and a masked inverse dynamics model (MIDM) for action regression.
             The video diffusion model is trained on 750K multi-view bimanual videos with test-time scaling (TTS) applied during testing, and it can adapt to new robot platforms <strong>with only 20 minutes of demonstrations</strong> with state-of-the-art performance and generalize to unseen tasks with strong semantic understanding.
           </p>
         </div>
 
         <div class="has-text-centered my-5">
           <figure class="image">
-            <img src="./assets/pdfs/VIDAR_methods.png" alt="VIDAR Methods" style="max-width: 120%; height: auto;">
+            <img src="./assets/pdfs/Vidar_methods.png" alt="Vidar Methods" style="max-width: 120%; height: auto;">
           </figure>
-          <p class="has-text-grey is-size-6">Figure: Methods of VIDAR.</p>
+          <p class="has-text-grey is-size-6">Figure: Methods of Vidar.</p>
         </div>
         <!-- Key Techniques -->
         <div class="content has-text-justified">
@@ -407,10 +407,10 @@
           <h3 class="title is-4">ATARA: Automatically collect data of target robots! (4x speed)</h3>
           <div class="video-container mb-6" style="display: flex; justify-content: center;">
             <video controls autoplay muted loop width="60%" style="max-width: 800px;">
-              <!-- <source src="{{ '/assets/videos/VIDAR_AnyPos.mp4' | relative_url }}" type="video/mp4"> -->
+              <!-- <source src="{{ '/assets/videos/Vidar_AnyPos.mp4' | relative_url }}" type="video/mp4"> -->
               <source src="./assets/videos/ATARA_episode_214_random_4x.mp4"
                               type="video/mp4">
-              <p>Your browser doesn't support HTML5 video. Here is a <a href="{{ '/assets/videos/VIDAR_AnyPos.mp4' | relative_url }}">link to the video</a> instead.</p>
+              <p>Your browser doesn't support HTML5 video. Here is a <a href="{{ '/assets/videos/Vidar_AnyPos.mp4' | relative_url }}">link to the video</a> instead.</p>
             </video>
           </div>
         </div>
