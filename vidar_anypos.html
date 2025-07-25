@@ -304,13 +304,13 @@
                 By using a vision-generation model for future observation prediction and a downstream inverse dynamics model (IDM) for action regression, we can achieve <strong>exceptional generalization capability</strong> and <strong>remarkable data efficiency</strong>.
               </li>
               <li>
-                <strong>Vidar</strong> (Video Diffusion for Action Reasoning) is a two-stage framework that leverages a large-scale, diffusion-based video pre-training model and a novel Masked Inverse Dynamics Model (MIDM) for action prediction, which can be generalized to an unseen robot platform <strong>with only 20 minutes of human demonstrations</strong>.
+                <strong>Vidar</strong> (Video Diffusion for Action Reasoning) is a two-stage framework that leverages a large-scale, diffusion-based video pre-training model and a novel Masked Inverse Dynamics Model (MIDM) for action prediction, which can be generalized to an unseen robot platform <strong>with only 20 minutes of human demonstrations (1/81 of RDT demonstrations, 1/1200 of π0.5 demonstrations)</strong>.
               </li>
               <li>
                 <strong>AnyPos</strong> is another inverse dynamics model equipped with Arm-Decoupled Estimation and a Direction-Aware Decoder (DAD) that <strong>is able to learn from ATARA-generated task-agnostic data</strong>. Therefore, ATARA and AnyPos constitute a fully task-agnostic framework for training IDMs <strong>without goal supervision</strong>.
               </li>
               <li>
-                Our experiments demonstrate that our Vidar framework can generalize to unseen tasks and backgrounds with strong semantic understanding, surpassing state-of-the-art methods like VPP and UniPi.
+                Our experiments demonstrate that our Vidar framework can generalize to unseen tasks and backgrounds with strong semantic understanding, surpassing state-of-the-art methods like VPP and UniPi by <strong>over 40%</strong>.
               </li>
               <li>
                 We additionally integrate a video-conditioned action validation module to verify the feasibility of learned policies across diverse manipulation tasks, and we demonstrate that the AnyPos-ATARA pipeline yields a <strong>51% improvement</strong> in test accuracy and achieves <strong>30-40% higher success rates</strong> in downstream tasks such as lifting, pick-and-place, and clicking, using replay-based video validation.
@@ -341,7 +341,7 @@
         <div class="content has-text-justified">
           <p>
             Vidar includes a video diffusion foundation model for video prediction and a masked inverse dynamics model (MIDM) for action regression.
-            The video diffusion model is trained on 750K multi-view bimanual videos with test-time scaling (TTS) applied during testing, and it can adapt to new robot platforms <strong>with only 20 minutes of demonstrations</strong> with state-of-the-art performance and generalize to unseen tasks with strong semantic understanding.
+            The video diffusion model is trained on <strong>750K multi-view bimanual videos</strong> with test-time scaling (TTS) applied during testing, and it can adapt to new robot platforms <strong>with only 20 minutes of demonstrations</strong> with state-of-the-art performance and generalize to unseen tasks with strong semantic understanding.
           </p>
         </div>
 
@@ -350,6 +350,13 @@
             <img src="./assets/pdfs/Vidar_methods.png" alt="Vidar Methods" style="max-width: 120%; height: auto;">
           </figure>
           <p class="has-text-grey is-size-6">Figure: Methods of Vidar.</p>
+        </div>
+
+        <div class="has-text-centered my-5">
+          <figure class="image">
+            <img src="./assets/pdfs/Vidar_examples.png" alt="Vidar Examples" style="max-width: 120%; height: auto;">
+          </figure>
+          <p class="has-text-grey is-size-6">Figure: Examples of Vidar.</p>
         </div>
         <!-- Key Techniques -->
         <div class="content has-text-justified">
