@@ -69,16 +69,16 @@
           <h1 class="title is-1 publication-title">H-RDT: Human Manipulation Enhanced Bimanual Robotic Manipulation</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-                <a href="https://hongzhebi.github.io/">Hongzhe Bi</a><sup>1</sup>,
+                <a href="https://hongzhebi.github.io/">Hongzhe Bi</a><sup>1,2</sup>,
             </span>
             <span class="author-block">
                 <a href="https://ethan-iai.github.io/">Lingxuan Wu</a><sup>1</sup>,
             </span>
             <span class="author-block">
-                <a href="https://wzmsltw.github.io/"></a>Tianwei Lin<sup>1</sup>,
+                <a href="https://wzmsltw.github.io/">Tianwei Lin</a><sup>2</sup>,
             </span>
             <span class="author-block">
-                <a href="https://scholar.google.com/citations?user=HQfc8TEAAAAJ&hl=en"></a>ZhiZhong Su<sup>1</sup>,
+                <a href="https://scholar.google.com/citations?user=HQfc8TEAAAAJ&hl=en">ZhiZhong Su</a><sup>2</sup>,
             </span>
             <span class="author-block">
               <a href="https://scholar.google.com/citations?user=dxN1_X0AAAAJ&hl=zh-CN&oi=ao">Hang Su</a><sup>1</sup>,
@@ -89,7 +89,8 @@
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block">AAAI 2025 Submission</span>
+            <span class="author-block"><sup>1</sup>Tsinghua University</span><br>
+            <span class="author-block"><sup>2</sup>Horizon Robotics</span><br>
           </div>
 
           <div class="column has-text-centered">
@@ -184,7 +185,7 @@
       <div class="column is-four-fifths">
         <div class="has-text-centered my-5">
           <figure class="image">
-            <img src="./assets/hrdt/figure1.png" alt="H-RDT Performance Overview" style="max-width: 100%; height: auto;">
+            <img src="./assets/hrdt/figure1.png" alt="H-RDT Performance Overview" style="max-width: 80%; height: auto;">
           </figure>
           <p class="has-text-grey is-size-6">Figure 1: Performance overview on RoboTwin 2.0 multi-task evaluations and few-shot real-world experiments.</p>
         </div>
@@ -202,7 +203,7 @@
         <!-- Architecture Overview -->
         <div class="has-text-centered my-5">
           <figure class="image">
-            <img src="./assets/hrdt/hrt_architecture.png" alt="H-RDT Architecture" style="max-width: 100%; height: auto;">
+            <img src="./assets/hrdt/hrt_architecture.png" alt="H-RDT Architecture" style="max-width: 85%; height: auto;">
           </figure>
           <p class="has-text-grey is-size-6">Figure 2: H-RDT architecture overview.</p>
         </div>
@@ -233,31 +234,101 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Experimental Results</h2>
         
+        <h3 class="title is-4">Simulation Results on RoboTwin 2.0</h3>
+        
+        <h4 class="title is-5">Single-Task Performance</h4>
+        <div class="content has-text-justified">
+          <p>
+            We evaluate single-task performance on 13 representative manipulation tasks from the RoboTwin 2.0 benchmark. Each task is trained on 50 demonstrations and evaluated in Easy mode (clean environments) and Hard mode (domain randomization).
+          </p>
+        </div>
+        
         <div class="has-text-centered my-5">
           <figure class="image">
-            <img src="./assets/hrdt/figure2.png" alt="H-RDT Results" style="max-width: 100%; height: auto;">
+            <img src="./assets/hrdt/table/table1.png" alt="Single-Task Results" style="max-width: 90%; height: auto;">
           </figure>
-          <p class="has-text-grey is-size-6">Figure 3: H-RDT performance comparison across different tasks.</p>
+          <p class="has-text-grey is-size-6">Table 1: Single-task success rates (%) on RoboTwin 2.0 benchmark. H-RDT achieves the highest average performance across both Easy and Hard evaluation modes.</p>
+        </div>
+
+        <h4 class="title is-5">Multi-Task Performance</h4>
+        <div class="content has-text-justified">
+          <p>
+            We conduct multi-task experiments on 45 tasks from RoboTwin 2.0, training on approximately 2250 demonstrations collected under domain randomization (Hard mode data).
+          </p>
+        </div>
+        
+        <div class="has-text-centered my-5">
+          <figure class="image">
+            <img src="./assets/hrdt/table/table2.png" alt="Multi-Task Results" style="max-width: 80%; height: auto;">
+          </figure>
+          <p class="has-text-grey is-size-6">Table 2: Multi-task success rates (%) on RoboTwin 2.0 benchmark (Hard mode evaluation). H-RDT achieves 87.2% average success rate, significantly outperforming all baselines.</p>
+        </div>
+
+        <h4 class="title is-5">Cross-Embodiment Generalization</h4>
+        <div class="content has-text-justified">
+          <p>
+            To validate cross-embodiment transfer capabilities, we conduct multi-task experiments across different robotic embodiments in simulation, evaluating both Aloha-Agilex-1.0 and Franka-Panda platforms.
+          </p>
+        </div>
+        
+        <div class="has-text-centered my-5">
+          <figure class="image">
+            <img src="./assets/hrdt/figure3.png" alt="Cross-Embodiment Results" style="max-width: 75%; height: auto;">
+          </figure>
+          <p class="has-text-grey is-size-6">Figure 3: Cross-embodiment multi-task performance on RoboTwin 2.0 tasks. H-RDT demonstrates strong performance across different robotic morphologies.</p>
+        </div>
+
+        <h3 class="title is-4">Real-world Validation</h3>
+        
+        <h4 class="title is-5">Dual-arm ARX5 Few-shot Experiments</h4>
+        <div class="content has-text-justified">
+          <p>
+            We design a challenging real-world experiment with 113 diverse pick-and-place tasks using a dual-arm ARX5 robotic system, with only 1-5 demonstrations per task. This extreme multi-task few-shot setting tests the limits of sample efficiency.
+          </p>
+        </div>
+        
+        <div class="has-text-centered my-5">
+          <figure class="image">
+            <img src="./assets/hrdt/table/table3.png" alt="Real-world Few-shot Results" style="max-width: 85%; height: auto;">
+          </figure>
+          <p class="has-text-grey is-size-6">Table 3: Real-world few-shot learning results on manipulation tasks. Each task has 1-5 demonstrations for training. H-RDT demonstrates superior sample efficiency with 41.6% average success rate.</p>
+        </div>
+
+        <h4 class="title is-5">Cross-Platform Real-world Results</h4>
+        <div class="content has-text-justified">
+          <p>
+            We further validate H-RDT across multiple real-world robotic platforms to demonstrate cross-embodiment transfer capabilities and robustness in practical deployment scenarios.
+          </p>
+        </div>
+        
+        <div class="has-text-centered my-5">
+          <figure class="image">
+            <img src="./assets/hrdt/table/table5.png" alt="Cross-Platform Results" style="max-width: 85%; height: auto;">
+          </figure>
+          <p class="has-text-grey is-size-6">Table 4: Cross-platform real-world validation results showing H-RDT's effectiveness across different robotic embodiments.</p>
         </div>
 
         <div class="has-text-centered my-5">
           <figure class="image">
-            <img src="./assets/hrdt/figure3.png" alt="H-RDT Detailed Analysis" style="max-width: 100%; height: auto;">
+            <img src="./assets/hrdt/figure2.png" alt="H-RDT Analysis" style="max-width: 75%; height: auto;">
           </figure>
-          <p class="has-text-grey is-size-6">Figure 4: Detailed performance analysis of H-RDT.</p>
+          <p class="has-text-grey is-size-6">Figure 4: Detailed performance analysis and comparison across different experimental settings.</p>
         </div>
         
         <div class="content has-text-justified">
-          <h3 class="title is-4">Key Results</h3>
+          <h3 class="title is-4">Key Findings</h3>
           <ul>
             <li>
-              <strong>Comprehensive Evaluation</strong>: Extensive evaluations encompassing both simulation and real-world experiments, single-task and multitask scenarios, as well as few-shot learning and robustness assessments.
+              <strong>Simulation Excellence</strong>: H-RDT achieves 68.7% success rate in single-task and 87.2% in multi-task scenarios, substantially outperforming existing methods.
             </li>
             <li>
-              <strong>Performance Improvements</strong>: H-RDT outperforms training from scratch and existing state-of-the-art methods including Pi-0 and RDT across various evaluation metrics.
+              <strong>Real-world Transfer</strong>: Demonstrates remarkable resilience in extreme few-shot settings (1-5 demonstrations), achieving 41.6% success rate compared to 31.2% for Pi-0.
             </li>
             <li>
-              <strong>Core Validation</strong>: The results validate our core hypothesis that human manipulation data can serve as a powerful foundation for learning robust robotic manipulation policies.
+              <strong>Cross-Embodiment Robustness</strong>: Consistent improvements across different robotic morphologies validate the cross-embodiment generalization capabilities.
+            </li>
+            <li>
+              <strong>Human Prior Benefits</strong>: The substantial improvements over training from scratch validate our core hypothesis that human manipulation data provides valuable inductive biases.
             </li>
           </ul>
         </div>
