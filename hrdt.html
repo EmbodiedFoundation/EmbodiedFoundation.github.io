@@ -69,7 +69,22 @@
           <h1 class="title is-1 publication-title">H-RDT: Human Manipulation Enhanced Bimanual Robotic Manipulation</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              Anonymous Authors
+                <a href="https://hongzhebi.github.io/">Hongzhe Bi</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+                <a href="https://ethan-iai.github.io/">Lingxuan Wu</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+                <a href="https://wzmsltw.github.io/"></a>Tianwei Lin<sup>1</sup>,
+            </span>
+            <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=HQfc8TEAAAAJ&hl=en"></a>ZhiZhong Su<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=dxN1_X0AAAAJ&hl=zh-CN&oi=ao">Hang Su</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://ml.cs.tsinghua.edu.cn/~jun/index.shtml">Jun Zhu</a><sup>1</sup>
             </span>
           </div>
 
@@ -131,29 +146,29 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">概述</h2>
+        <h2 class="title is-3">Overview</h2>
         <div class="content has-text-justified">
           <p>
-            机器人操作的模仿学习面临一个根本性挑战：<strong>缺乏大规模、高质量的机器人演示数据</strong>。
+            Imitation learning for robotic manipulation faces a fundamental challenge: <strong>the scarcity of large-scale, high-quality robot demonstration data</strong>.
           </p>
           <ul>
             <li>
-              虽然最近的机器人基础模型经常在跨体现机器人数据集上进行预训练，但它们面临着显著的限制：不同机器人体现的多样化形态和动作空间使统一训练变得困难。
+              While recent robotic foundation models often pre-train on cross-embodiment robot datasets, they face significant limitations: the diverse morphologies and action spaces across different robot embodiments make unified training challenging.
             </li>
             <li>
-              我们提出了<strong>H-RDT</strong>（<strong>人类到机器人扩散变换器</strong>），这是一种利用人类操作数据来增强机器人操作能力的新方法。
+              We present <strong>H-RDT</strong> (<strong>Human to Robotics Diffusion Transformer</strong>), a novel approach that leverages human manipulation data to enhance robot manipulation capabilities.
             </li>
             <li>
-              我们的关键洞察是：<strong>配有3D手部姿态标注的大规模自我中心人类操作视频提供了丰富的行为先验</strong>，这些先验捕获了自然的操作策略，可以有益于机器人策略学习。
+              Our key insight is that <strong>large-scale egocentric human manipulation videos with paired 3D hand pose annotations provide rich behavioral priors</strong> that capture natural manipulation strategies and can benefit robotic policy learning.
             </li>
             <li>
-              我们引入了两阶段训练范式：<strong>(1) 在大规模自我中心人类操作数据上预训练，(2) 使用模块化动作编码器和解码器在机器人特定数据上进行跨体现微调</strong>。
+              We introduce a two-stage training paradigm: <strong>(1) pre-training on large-scale egocentric human manipulation data, and (2) cross-embodiment fine-tuning on robot-specific data with modular action encoders and decoders</strong>.
             </li>
             <li>
-              基于拥有20亿参数的扩散变换器架构，H-RDT使用流匹配来建模复杂的动作分布。
+              Built on a diffusion transformer architecture with 2B parameters, H-RDT uses flow matching to model complex action distributions.
             </li>
             <li>
-              动作编码器和解码器组件的模块化设计通过高效微调，使得知识能够从统一的人类体现有效转移到不同的机器人平台。
+              The modular design of action encoder and decoder components enables effective knowledge transfer from the unified human embodiment to diverse robot platforms through efficient fine-tuning.
             </li>
           </ul>
         </div>
@@ -171,7 +186,7 @@
           <figure class="image">
             <img src="./assets/hrdt/figure1.png" alt="H-RDT Performance Overview" style="max-width: 100%; height: auto;">
           </figure>
-          <p class="has-text-grey is-size-6">图1: H-RDT在RoboTwin 2.0多任务评估和少样本真实世界实验中的性能概览。</p>
+          <p class="has-text-grey is-size-6">Figure 1: Performance overview on RoboTwin 2.0 multi-task evaluations and few-shot real-world experiments.</p>
         </div>
       </div>
     </div>
@@ -182,27 +197,27 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">方法</h2>
+        <h2 class="title is-3">Method</h2>
         
         <!-- Architecture Overview -->
         <div class="has-text-centered my-5">
           <figure class="image">
             <img src="./assets/hrdt/hrt_architecture.png" alt="H-RDT Architecture" style="max-width: 100%; height: auto;">
           </figure>
-          <p class="has-text-grey is-size-6">图2: H-RDT架构概览。</p>
+          <p class="has-text-grey is-size-6">Figure 2: H-RDT architecture overview.</p>
         </div>
         
         <div class="content has-text-justified">
-          <h3 class="title is-4">核心创新</h3>
+          <h3 class="title is-4">Key Innovations</h3>
           <ul>
             <li>
-              <strong>数据稀缺性解决方案</strong>：我们利用丰富的带有3D手部姿态标注的人类操作视频，提供丰富的行为先验，捕获自然的操作策略、物体交互能力和任务分解模式。
+              <strong>Data Scarcity Solution</strong>: We harness the abundance of human manipulation videos with 3D hand pose annotations to provide rich behavioral priors that capture natural manipulation strategies, object affordances, and task decomposition patterns.
             </li>
             <li>
-              <strong>跨体现转移</strong>：我们开发了一个模块化变换器架构，具有专门的动作编码器和解码器，能够在保持学习到的操作知识的同时，实现从人类演示到不同机器人平台的有效知识转移。
+              <strong>Cross-Embodiment Transfer</strong>: We develop a modular transformer architecture with specialized action encoders and decoders that enables effective knowledge transfer from human demonstrations to diverse robotic platforms while preserving learned manipulation knowledge.
             </li>
             <li>
-              <strong>训练效率</strong>：我们采用两阶段训练范式，在大规模人类数据上预训练，然后进行跨体现微调——结合流匹配实现稳定高效的策略学习。
+              <strong>Training Efficiency</strong>: We employ a two-stage training paradigm, pre-training on large-scale human data followed by cross-embodiment fine-tuning—combined with flow matching for stable and efficient policy learning.
             </li>
           </ul>
         </div>
@@ -216,33 +231,33 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">实验结果</h2>
+        <h2 class="title is-3">Experimental Results</h2>
         
         <div class="has-text-centered my-5">
           <figure class="image">
             <img src="./assets/hrdt/figure2.png" alt="H-RDT Results" style="max-width: 100%; height: auto;">
           </figure>
-          <p class="has-text-grey is-size-6">图3: H-RDT在不同任务上的性能对比。</p>
+          <p class="has-text-grey is-size-6">Figure 3: H-RDT performance comparison across different tasks.</p>
         </div>
 
         <div class="has-text-centered my-5">
           <figure class="image">
             <img src="./assets/hrdt/figure3.png" alt="H-RDT Detailed Analysis" style="max-width: 100%; height: auto;">
           </figure>
-          <p class="has-text-grey is-size-6">图4: H-RDT的详细性能分析。</p>
+          <p class="has-text-grey is-size-6">Figure 4: Detailed performance analysis of H-RDT.</p>
         </div>
         
         <div class="content has-text-justified">
-          <h3 class="title is-4">主要成果</h3>
+          <h3 class="title is-4">Key Results</h3>
           <ul>
             <li>
-              <strong>全面评估</strong>：包括仿真和真实世界实验、单任务和多任务场景，以及少样本学习和鲁棒性评估。
+              <strong>Comprehensive Evaluation</strong>: Extensive evaluations encompassing both simulation and real-world experiments, single-task and multitask scenarios, as well as few-shot learning and robustness assessments.
             </li>
             <li>
-              <strong>性能提升</strong>：H-RDT在各种评估中都优于从零开始训练和现有最先进方法，包括Pi-0和RDT。
+              <strong>Performance Improvements</strong>: H-RDT outperforms training from scratch and existing state-of-the-art methods including Pi-0 and RDT across various evaluation metrics.
             </li>
             <li>
-              <strong>核心验证</strong>：结果验证了我们的核心假设，即人类操作数据可以作为学习鲁棒机器人操作策略的强大基础。
+              <strong>Core Validation</strong>: The results validate our core hypothesis that human manipulation data can serve as a powerful foundation for learning robust robotic manipulation policies.
             </li>
           </ul>
         </div>
@@ -255,20 +270,20 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">主要贡献</h2>
+        <h2 class="title is-3">Main Contributions</h2>
         <div class="content has-text-justified">
           <ul>
             <li>
-              <strong>新颖的人类到机器人知识转移框架</strong>：通过人类操作数据预训练实现结构和训练方法创新。
+              <strong>Novel Human-to-Robot Knowledge Transfer Framework</strong>: Structural and training method innovations for human-to-robot knowledge transfer through human manipulation data pre-training.
             </li>
             <li>
-              <strong>模块化扩散变换器架构</strong>：专门设计的动作编码器和解码器，支持从人类体现到不同机器人平台的有效知识转移。
+              <strong>Modular Diffusion Transformer Architecture</strong>: Specialized action encoders and decoders designed to support effective knowledge transfer from human embodiment to diverse robot platforms.
             </li>
             <li>
-              <strong>两阶段训练策略</strong>：结合大规模人类数据预训练和跨体现微调，使用流匹配技术。
+              <strong>Two-Stage Training Strategy</strong>: Combining large-scale human data pre-training with cross-embodiment fine-tuning using flow matching techniques.
             </li>
             <li>
-              <strong>全面的实验验证</strong>：在多种任务、环境和评估指标上证明了方法的有效性。
+              <strong>Comprehensive Experimental Validation</strong>: Demonstrating effectiveness across multiple tasks, environments, and evaluation metrics.
             </li>
           </ul>
         </div>
