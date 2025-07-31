@@ -52,11 +52,21 @@
   </div>
   <div class="navbar-menu">
     <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://github.com/thu-ml/">
-      <span class="icon">
-          <i class="fas fa-home"></i>
-      </span>
-      </a>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://github.com/thu-ml/">
+            TSAIL Group
+          </a>
+          <a class="navbar-item" href="https://embodiedfoundation.github.io/vidar_anypos">
+            Vidar & AnyPos
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </nav>
@@ -105,7 +115,7 @@
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
                   </span>
-                  <span>arXiv (Coming Soon)</span>
+                  <span>arXiv</span>
                 </a>
               </span>
               <!-- Code Link. -->
@@ -139,11 +149,11 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Overview</h2>
+        <h2 class="title is-3 has-text-centered">Overview</h2>
         
         <div class="has-text-centered my-5">
           <figure class="image">
-            <img src="./assets/hrdt/figure1.jpg" alt="H-RDT Overview" style="max-width: 80%; height: auto;">
+            <img src="./assets/hrdt/figure1.jpg" alt="H-RDT Overview" style="max-width: 80%; height: auto; display: block; margin: 0 auto;">
           </figure>
           <p class="has-text-grey is-size-6">Figure 1: Overview of H-RDT. A human-to-robotics diffusion transformer with two-stage training.</p>
         </div>
@@ -173,48 +183,28 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">H-RDT: Human to Robotics Diffusion Transformer</h2>
+        <h2 class="title is-3 has-text-centered">H-RDT: Human to Robotics Diffusion Transformer</h2>
         
         <!-- Architecture Overview -->
         <div class="has-text-centered my-5">
           <figure class="image">
-            <img src="./assets/hrdt/figure2.png" alt="H-RDT Architecture" style="max-width: 90%; height: auto;">
+            <img src="./assets/hrdt/figure2.png" alt="H-RDT Architecture" style="max-width: 90%; height: auto; display: block; margin: 0 auto;">
           </figure>
-          <p class="has-text-grey is-size-6">Figure 2: H-RDT framework. Our approach consists of two main stages: (1) pre-training on large-scale human manipulation data with 48-dimensional hand pose representations, and (2) cross-embodiment fine-tuning with modular action encoders and decoders adapted to specific robot action spaces.</p>
+          <p class="has-text-grey is-size-6">Figure 2: H-RDT framework.</p>
         </div>
         
         <div class="content has-text-justified">
-          <h3 class="title is-4">Key Techniques</h3>
+          <h3 class="title is-4 has-text-centered">Key Techniques</h3>
           
           <ul>
             <li>
-              <strong>Human Action Representation Design:</strong> H-RDT uses a unified 48-dimensional action space that captures essential bimanual manipulation information:
-              <ul style="margin-top: 0.5rem;">
-                <li><strong>Bilateral wrist poses</strong>: Position (3D) + orientation (6D rotation) for both hands = 18 dimensions</li>
-                <li><strong>Fingertip positions</strong>: 3D coordinates for all 5 fingers on both hands = 30 dimensions</li>
-                <li><strong>Total</strong>: 48 dimensions capturing essential bimanual dexterous manipulation patterns</li>
-              </ul>
+              <strong>Human Action Representation Design:</strong> H-RDT uses a unified 48-dimensional action space capturing bilateral wrist poses (position + 6D rotation) and fingertip positions for all 5 fingers on both hands, totaling 48 dimensions of essential bimanual dexterous manipulation patterns.
             </li>
-            <li style="margin-top: 1rem;">
-              <strong>Two-Stage Training Paradigm:</strong>
-              <ul style="margin-top: 0.5rem;">
-                <li>
-                  <strong>Stage 1: Human Data Pre-training</strong>
-                  <ul style="margin-top: 0.3rem;">
-                    <li>Train on complete <strong>EgoDex dataset</strong> (338K+ trajectories, 194 manipulation tasks, 829 hours)</li>
-                    <li>Learn general manipulation priors from human demonstrations</li>
-                    <li>Develop robust 48D action representations for dexterous bimanual manipulation</li>
-                  </ul>
-                </li>
-                <li style="margin-top: 0.8rem;">
-                  <strong>Stage 2: Cross-Embodiment Fine-tuning</strong>
-                  <ul style="margin-top: 0.3rem;">
-                    <li>Transfer vision encoder, language encoder, and transformer backbone weights</li>
-                    <li>Re-initialize action adapters for target robot action space (e.g., 14D for dual 7-DOF arms)</li>
-                    <li>Preserve learned manipulation semantics while adapting to robot morphologies</li>
-                  </ul>
-                </li>
-              </ul>
+            <li>
+              <strong>Two-Stage Training Paradigm:</strong> Our approach consists of two main stages: (1) pre-training on large-scale human manipulation data with 48-dimensional hand pose representations using the complete EgoDex dataset (338K+ trajectories, 194 manipulation tasks, 829 hours), and (2) cross-embodiment fine-tuning with modular action encoders and decoders adapted to specific robot action spaces.
+            </li>
+            <li>
+              <strong>Diffusion Transformer Architecture:</strong> Built on a diffusion transformer with 2B parameters, H-RDT uses flow matching to model complex action distributions and achieve robust manipulation capabilities.
             </li>
           </ul>
         </div>
@@ -228,7 +218,7 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">H-RDT Inference Video Samples</h2>
+        <h2 class="title is-3 has-text-centered">H-RDT Inference Video Samples</h2>
         
         <div class="content has-text-justified">
           <p class="has-text-centered" style="margin-top: 2rem; font-style: italic;">
@@ -245,11 +235,11 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Real-world Task Definitions</h2>
+        <h2 class="title is-3 has-text-centered">Real-world Task Definitions</h2>
         
         <div class="has-text-centered my-5">
           <figure class="image">
-            <img src="./assets/hrdt/figure4.png" alt="Real-world Task Definitions" style="max-width: 90%; height: auto;">
+            <img src="./assets/hrdt/figure4.png" alt="Real-world Task Definitions" style="max-width: 90%; height: auto; display: block; margin: 0 auto;">
           </figure>
           <p class="has-text-grey is-size-6">Figure 4: Task definition of real-world experiments.</p>
         </div>
