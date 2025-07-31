@@ -78,6 +78,9 @@
                 <a href="https://wzmsltw.github.io/">Tianwei Lin</a><sup>2</sup>,
             </span>
             <span class="author-block">
+                <a href="https://stormy-cheese-458.notion.site/Hengkai-Tan-22a9b6e0b5bb801782edc3771ff3ba37">Hengkai Tan</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
                 <a href="https://scholar.google.com/citations?user=HQfc8TEAAAAJ&hl=en">ZhiZhong Su</a><sup>2</sup>,
             </span>
             <span class="author-block">
@@ -102,7 +105,7 @@
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
                   </span>
-                  <span>arXiv</span>
+                  <span>arXiv (Coming Soon)</span>
                 </a>
               </span>
               <!-- Code Link. -->
@@ -139,16 +142,16 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Imitation learning for robotic manipulation faces a fundamental challenge: <strong>the scarcity of large-scale, high-quality robot demonstration data</strong>. While recent robotic foundation models often pre-train on cross-embodiment robot datasets, they face significant limitations: the diverse morphologies and action spaces across different robot embodiments make unified training challenging.
+            Imitation learning for robotic manipulation faces a fundamental challenge: <strong>the scarcity of large-scale, high-quality robot demonstration data</strong>. Recent robotic foundation models often pre-train on cross-embodiment robot datasets to increase data scale, while they face significant limitations as the diverse morphologies and action spaces across different robot embodiments make unified training challenging.
           </p>
           <p>
-            We present <strong>H-RDT (Human to Robotics Diffusion Transformer)</strong>, a novel approach that leverages human manipulation data to enhance robot manipulation capabilities. Our key insight is that <strong>large-scale egocentric human manipulation videos with paired 3D hand pose annotations provide rich behavioral priors</strong> that capture natural manipulation strategies and can benefit robotic policy learning.
+            In this paper, we present <strong>H-RDT (Human to Robotics Diffusion Transformer)</strong>, a novel approach that leverages human manipulation data to enhance robot manipulation capabilities. Our key insight is that <strong>large-scale egocentric human manipulation videos with paired 3D hand pose annotations provide rich behavioral priors</strong> that capture natural manipulation strategies and can benefit robotic policy learning.
           </p>
           <p>
-            We introduce a <strong>two-stage training paradigm</strong>: (1) pre-training on large-scale egocentric human manipulation data, and (2) cross-embodiment fine-tuning on robot-specific data with modular action encoders and decoders. Built on a diffusion transformer architecture with <strong>2B parameters</strong>, H-RDT uses <strong>flow matching</strong> to model complex action distributions. The modular design enables effective knowledge transfer from human embodiment to diverse robot platforms through efficient fine-tuning.
+            We introduce a <strong>two-stage training paradigm</strong>: (1) pre-training on large-scale egocentric human manipulation data, and (2) cross-embodiment fine-tuning on robot-specific data with modular action encoders and decoders. Built on a diffusion transformer architecture with <strong>2B parameters</strong>, H-RDT uses <strong>flow matching</strong> to model complex action distributions. The modular design of action encoder and decoder components enables effective knowledge transfer from the unified human embodiment to diverse robot platforms through efficient fine-tuning.
           </p>
           <p>
-            Extensive evaluations demonstrate that H-RDT outperforms training from scratch and existing state-of-the-art methods including Pi-0 and RDT, validating our core hypothesis that human manipulation data can serve as a powerful foundation for learning robust robotic manipulation policies.
+            Extensive evaluations encompassing both simulation and real-world experiments, single-task and multitask scenarios, as well as few-shot learning and robustness assessments, demonstrate that H-RDT outperforms training from scratch and existing state-of-the-art methods, including <strong>π₀ and RDT</strong>, achieving significant improvements of <strong>13.9%</strong> and <strong>40.5%</strong> over training from scratch in simulation and real-world experiments, respectively. The results validate our core hypothesis that human manipulation data can serve as a powerful foundation for learning bimanual robotic manipulation policies.
           </p>
         </div>
       </div>
@@ -161,21 +164,17 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Performance Overview</h2>
+        <h2 class="title is-3">Overview</h2>
         <div class="has-text-centered my-5">
           <figure class="image">
             <img src="./assets/hrdt/figure1.png" alt="H-RDT Performance Overview" style="max-width: 70%; height: auto;">
           </figure>
-          <p class="has-text-grey is-size-6">Figure 1: Performance overview on RoboTwin 2.0 multi-task evaluations and few-shot real-world experiments. H-RDT achieves 73.1% on simulation and 41.6% on real-world few-shot tasks, substantially outperforming all baselines.</p>
+          <p class="has-text-grey is-size-6">Figure 1: Overview of H-RDT. A human-to-robotics diffusion transformer with two-stage training.</p>
         </div>
         <div class="content has-text-justified">
           <p>
-            H-RDT demonstrates superior performance across both simulation and real-world scenarios:
+            H-RDT demonstrates superior performance across both simulation and real-world scenarios, achieving significant improvements of <strong>13.9%</strong> and <strong>40.5%</strong> over training from scratch in simulation and real-world experiments, respectively.
           </p>
-          <ul>
-            <li><strong>RoboTwin 2.0 Multi-task</strong>: 73.1% success rate vs. 55.6% (Pi0) and 40.2% (RDT)</li>
-            <li><strong>Few-shot Real World</strong>: 41.6% success rate vs. 31.2% (Pi0) and 17.6% (Scratch)</li>
-          </ul>
         </div>
       </div>
     </div>
@@ -193,7 +192,7 @@
           <figure class="image">
             <img src="./assets/hrdt/figure2.png" alt="H-RDT Architecture" style="max-width: 90%; height: auto;">
           </figure>
-          <p class="has-text-grey is-size-6">Figure 2: H-RDT architecture overview showing the two-stage training paradigm with modular action encoders and decoders.</p>
+          <p class="has-text-grey is-size-6">Figure 2: H-RDT framework. Our approach consists of two main stages: (1) pre-training on large-scale human manipulation data with 48-dimensional hand pose representations, and (2) cross-embodiment fine-tuning with modular action encoders and decoders adapted to specific robot action spaces.</p>
         </div>
         
         <div class="content has-text-justified">
@@ -211,7 +210,7 @@
           
           <h4 class="title is-5">Stage 1: Human Data Pre-training</h4>
           <ul>
-            <li>Train on complete <strong>EgoDx dataset</strong> (338K+ trajectories, 194 manipulation tasks, 829 hours)</li>
+            <li>Train on complete <strong>EgoDex dataset</strong> (338K+ trajectories, 194 manipulation tasks, 829 hours)</li>
             <li>Learn general manipulation priors from human demonstrations</li>
             <li>Develop robust 48D action representations for dexterous bimanual manipulation</li>
           </ul>
@@ -237,111 +236,39 @@
   </div>
 </section>
 
-<!-- Experimental Results -->
+<!-- Real-world Task Definitions -->
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Experimental Results</h2>
-        
-        <h3 class="title is-4">Simulation Results on RoboTwin 2.0</h3>
-        
-        <h4 class="title is-5">Single-Task and Multi-Task Performance</h4>
-        <div class="content has-text-justified">
-          <p>
-            We evaluate H-RDT on the RoboTwin 2.0 benchmark across both single-task (13 tasks, 50 demonstrations each) and multi-task (45 tasks, 2250 demonstrations total) scenarios.
-          </p>
-        </div>
-        
-        <div class="columns is-centered my-5">
-          <div class="column is-6">
-            <div class="has-text-centered">
-              <figure class="image">
-                <img src="./assets/hrdt/table/table1.png" alt="Single-Task Results" style="max-width: 100%; height: auto;">
-              </figure>
-              <p class="has-text-grey is-size-6">Table 1: Single-task success rates (%) showing H-RDT's superior performance in both Easy and Hard modes.</p>
-            </div>
-          </div>
-          <div class="column is-6">
-            <div class="has-text-centered">
-              <figure class="image">
-                <img src="./assets/hrdt/table/table2.png" alt="Multi-Task Results" style="max-width: 100%; height: auto;">
-              </figure>
-              <p class="has-text-grey is-size-6">Table 2: Multi-task success rates (%) with H-RDT achieving 87.2% average success rate.</p>
-            </div>
-          </div>
-        </div>
-
-        <h4 class="title is-5">Cross-Embodiment Generalization</h4>
-        <div class="content has-text-justified">
-          <p>
-            To validate cross-embodiment transfer capabilities, we conduct multi-task experiments across different robotic embodiments in simulation, evaluating both Aloha-Agilex-1.0 and Franka-Panda platforms.
-          </p>
-        </div>
+        <h2 class="title is-3">Real-world Task Definitions</h2>
         
         <div class="has-text-centered my-5">
           <figure class="image">
-            <img src="./assets/hrdt/figure3.png" alt="Cross-Embodiment Results" style="max-width: 70%; height: auto;">
+            <img src="./assets/hrdt/figure4.png" alt="Real-world Task Definitions" style="max-width: 90%; height: auto;">
           </figure>
-          <p class="has-text-grey is-size-6">Figure 3: Cross-embodiment multi-task performance on RoboTwin 2.0 tasks. H-RDT demonstrates strong performance across different robotic morphologies.</p>
+          <p class="has-text-grey is-size-6">Figure 4: Task definition of real-world experiments.</p>
         </div>
-
-        <h3 class="title is-4">Real-world Validation</h3>
         
-        <h4 class="title is-5">Real-world Validation Results</h4>
         <div class="content has-text-justified">
           <p>
-            We validate H-RDT in challenging real-world settings: extreme few-shot learning (1-5 demonstrations per task) and cross-platform deployment across multiple robotic embodiments.
+            Our real-world experiments encompass diverse bimanual manipulation tasks across multiple robotic platforms:
           </p>
-        </div>
-        
-        <div class="columns is-centered my-5">
-          <div class="column is-6">
-            <div class="has-text-centered">
-              <figure class="image">
-                <img src="./assets/hrdt/table/table3.png" alt="Real-world Few-shot Results" style="max-width: 100%; height: auto;">
-              </figure>
-              <p class="has-text-grey is-size-6">Table 3: Few-shot learning results (1-5 demonstrations) showing H-RDT's superior sample efficiency at 41.6% success rate.</p>
-            </div>
-          </div>
-          <div class="column is-6">
-            <div class="has-text-centered">
-              <figure class="image">
-                <img src="./assets/hrdt/table/table5.png" alt="Cross-Platform Results" style="max-width: 100%; height: auto;">
-              </figure>
-              <p class="has-text-grey is-size-6">Table 4: Cross-platform validation results demonstrating H-RDT's effectiveness across different robotic embodiments.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="has-text-centered my-5">
-          <figure class="image">
-            <img src="./assets/hrdt/hrt_architecture.png" alt="H-RDT Detailed Architecture" style="max-width: 80%; height: auto;">
-          </figure>
-          <p class="has-text-grey is-size-6">Figure 4: Detailed H-RDT architecture showing the modular design and two-stage training paradigm.</p>
-        </div>
-        
-        <div class="content has-text-justified">
-          <h3 class="title is-4">Key Findings</h3>
           <ul>
-            <li>
-              <strong>Simulation Excellence</strong>: H-RDT achieves 68.7% success rate in single-task and 87.2% in multi-task scenarios, substantially outperforming existing methods.
-            </li>
-            <li>
-              <strong>Real-world Transfer</strong>: Demonstrates remarkable resilience in extreme few-shot settings (1-5 demonstrations), achieving 41.6% success rate compared to 31.2% for Pi-0.
-            </li>
-            <li>
-              <strong>Cross-Embodiment Robustness</strong>: Consistent improvements across different robotic morphologies validate the cross-embodiment generalization capabilities.
-            </li>
-            <li>
-              <strong>Human Prior Benefits</strong>: The substantial improvements over training from scratch validate our core hypothesis that human manipulation data provides valuable inductive biases.
-            </li>
+            <li><strong>Dual-Arm Piper</strong>: Towel folding and cup-to-coaster placement tasks requiring deformable object manipulation and spatial reasoning</li>
+            <li><strong>Dual-Arm UR5</strong>: Takeout bag placement tasks with sequential bimanual coordination</li>
+            <li><strong>Dual-Arm ARX5</strong>: Pick-and-place manipulation tasks including stacking bowls and object placement</li>
           </ul>
+          <p>
+            These tasks validate H-RDT's ability to handle complex real-world scenarios with varying degrees of dexterity and coordination requirements.
+          </p>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -351,18 +278,48 @@
         <div class="content has-text-justified">
           <ul>
             <li>
-              <strong>Novel Human-to-Robot Knowledge Transfer Framework</strong>: Structural and training method innovations for human-to-robot knowledge transfer through human manipulation data pre-training.
+              <strong>Novel Framework for Human Manipulation Data</strong>: A novel framework for systematically leveraging large-scale egocentric human manipulation data to enhance robotic policy learning.
             </li>
             <li>
-              <strong>Modular Diffusion Transformer Architecture</strong>: Specialized action encoders and decoders designed to support effective knowledge transfer from human embodiment to diverse robot platforms.
+              <strong>Modular Diffusion Transformer Architecture</strong>: A diffusion transformer architecture with modular human-to-robot transfer components that enables effective cross-embodiment knowledge transfer.
             </li>
             <li>
-              <strong>Two-Stage Training Strategy</strong>: Combining large-scale human data pre-training with cross-embodiment fine-tuning using flow matching techniques.
+              <strong>Comprehensive Empirical Validation</strong>: A comprehensive empirical validation demonstrating consistent improvements over state-of-the-art methods across simulation and real-world scenarios.
             </li>
             <li>
-              <strong>Comprehensive Experimental Validation</strong>: Demonstrating effectiveness across multiple tasks, environments, and evaluation metrics.
+              <strong>Human Manipulation Priors Insights</strong>: Insights into the value of human manipulation priors for sample-efficient robot learning, particularly in few-shot settings.
             </li>
           </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BibTeX Citation -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">BibTeX</h2>
+        <div class="content has-text-justified">
+          <p>
+            If you find our work helpful, please cite us:
+          </p>
+        </div>
+        <pre><code>@misc{bi2025hrdt,
+    title={H-RDT: Human Manipulation Enhanced Bimanual Robotic Manipulation}, 
+    author={Hongzhe Bi and Lingxuan Wu and Tianwei Lin and Hengkai Tan and Zhizhong Su and Hang Su and Jun Zhu},
+    year={2025},
+    eprint={TBD},
+    archivePrefix={arXiv},
+    primaryClass={cs.RO},
+    url={https://embodiedfoundation.github.io/hrdt}, 
+}</code></pre>
+        <div class="content has-text-justified">
+          <p>
+            Thank you!
+          </p>
         </div>
       </div>
     </div>
