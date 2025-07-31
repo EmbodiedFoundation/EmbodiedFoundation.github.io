@@ -39,7 +39,7 @@
     .video-carousel {
       position: relative;
       width: 100%;
-      max-width: 600px;
+      max-width: 400px;
       margin: 0 auto;
       overflow: hidden;
       border-radius: 8px;
@@ -62,7 +62,7 @@
     .video-slide video {
       width: 100%;
       height: auto;
-      max-width: 600px;
+      max-width: 400px;
     }
     
     .carousel-controls {
@@ -115,20 +115,7 @@
       background: #007bff;
     }
     
-    .video-comparison-section {
-      margin-bottom: 3rem;
-    }
-    
-    .video-comparison-section h4 {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1rem;
-    }
-    
-    .video-comparison-section .icon {
-      font-size: 1.2em;
-    }
+
   </style>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -250,11 +237,7 @@
         
         <div class="has-text-centered my-5">
           <figure class="image">
-<<<<<<< HEAD
             <img src="./assets/hrdt/figure1.jpg" alt="H-RDT Overview" style="max-width: 120%; height: auto; display: block; margin: 0 auto;">
-=======
-            <img src="./assets/hrdt/figure1.jpg" alt="H-RDT Overview" style="max-width: 80%; height: auto; display: block; margin: 0 auto;">
->>>>>>> ccfd9b8164daa220ae0e5cb3027f468683c41198
           </figure>
           <p class="has-text-grey is-size-6">Figure 1: Overview of H-RDT. A human-to-robotics diffusion transformer with two-stage training.</p>
         </div>
@@ -289,11 +272,7 @@
         <!-- Architecture Overview -->
         <div class="has-text-centered my-5">
           <figure class="image">
-<<<<<<< HEAD
             <img src="./assets/hrdt/figure2.png" alt="H-RDT Architecture" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
-=======
-            <img src="./assets/hrdt/figure2.png" alt="H-RDT Architecture" style="max-width: 90%; height: auto; display: block; margin: 0 auto;">
->>>>>>> ccfd9b8164daa220ae0e5cb3027f468683c41198
           </figure>
           <p class="has-text-grey is-size-6">Figure 2: H-RDT framework.</p>
         </div>
@@ -329,85 +308,78 @@
         <div class="content has-text-justified">
           <h3 class="title is-4 has-text-centered" style="margin-top: 3rem;">Cup Placement Task</h3>
           
-          <!-- H-RDT Results (Success) -->
-          <div class="video-comparison-section" style="margin-bottom: 3rem;">
-            <div class="has-text-centered" style="margin-bottom: 1rem;">
-              <h4 class="title is-5">
-                <span class="icon has-text-success" style="margin-right: 0.5rem;">
-                  <i class="fas fa-check-circle"></i>
-                </span>
-                H-RDT (Success)
-              </h4>
-            </div>
-            <div class="video-carousel" id="cup-place-hrdt-carousel">
-              <div class="video-slides-container">
-                <div class="video-slide">
-                  <video controls style="width: 100%; max-width: 600px; height: auto;">
-                    <source src="./assets/hrdt/videos/cup_place/hrdt/3.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>
+          <!-- Video Comparison Row -->
+          <div class="columns is-centered" style="margin-top: 2rem;">
+            <!-- H-RDT Videos -->
+            <div class="column is-5">
+              <div class="has-text-centered" style="margin-bottom: 1rem;">
+                <h4 class="title is-5">H-RDT</h4>
+              </div>
+              <div class="video-carousel" id="cup-place-hrdt-carousel">
+                <div class="video-slides-container">
+                  <div class="video-slide">
+                    <video controls style="width: 100%; max-width: 400px; height: auto;">
+                      <source src="./assets/hrdt/videos/cup_place/hrdt/3.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <div class="video-slide">
+                    <video controls style="width: 100%; max-width: 400px; height: auto;">
+                      <source src="./assets/hrdt/videos/cup_place/hrdt/4.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <div class="video-slide">
+                    <video controls style="width: 100%; max-width: 400px; height: auto;">
+                      <source src="./assets/hrdt/videos/cup_place/hrdt/5.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
                 </div>
-                <div class="video-slide">
-                  <video controls style="width: 100%; max-width: 600px; height: auto;">
-                    <source src="./assets/hrdt/videos/cup_place/hrdt/4.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-                <div class="video-slide">
-                  <video controls style="width: 100%; max-width: 600px; height: auto;">
-                    <source src="./assets/hrdt/videos/cup_place/hrdt/5.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>
+                <button class="carousel-controls carousel-prev" onclick="changeSlide('cup-place-hrdt-carousel', -1)">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-controls carousel-next" onclick="changeSlide('cup-place-hrdt-carousel', 1)">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="carousel-indicators">
+                  <span class="carousel-indicator active" onclick="goToSlide('cup-place-hrdt-carousel', 0)"></span>
+                  <span class="carousel-indicator" onclick="goToSlide('cup-place-hrdt-carousel', 1)"></span>
+                  <span class="carousel-indicator" onclick="goToSlide('cup-place-hrdt-carousel', 2)"></span>
                 </div>
               </div>
-              <button class="carousel-controls carousel-prev" onclick="changeSlide('cup-place-hrdt-carousel', -1)">
-                <i class="fas fa-chevron-left"></i>
-              </button>
-              <button class="carousel-controls carousel-next" onclick="changeSlide('cup-place-hrdt-carousel', 1)">
-                <i class="fas fa-chevron-right"></i>
-              </button>
-              <div class="carousel-indicators">
-                <span class="carousel-indicator active" onclick="goToSlide('cup-place-hrdt-carousel', 0)"></span>
-                <span class="carousel-indicator" onclick="goToSlide('cup-place-hrdt-carousel', 1)"></span>
-                <span class="carousel-indicator" onclick="goToSlide('cup-place-hrdt-carousel', 2)"></span>
-              </div>
             </div>
-          </div>
-
-          <!-- Scratch Results (Failure) -->
-          <div class="video-comparison-section" style="margin-bottom: 3rem;">
-            <div class="has-text-centered" style="margin-bottom: 1rem;">
-              <h4 class="title is-5">
-                <span class="icon has-text-danger" style="margin-right: 0.5rem;">
-                  <i class="fas fa-times-circle"></i>
-                </span>
-                Scratch (Failure)
-              </h4>
-            </div>
-            <div class="video-carousel" id="cup-place-scratch-carousel">
-              <div class="video-slides-container">
-                <div class="video-slide">
-                  <video controls style="width: 100%; max-width: 600px; height: auto;">
-                    <source src="./assets/hrdt/videos/cup_place/scratch/1.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-                <div class="video-slide">
-                  <video controls style="width: 100%; max-width: 600px; height: auto;">
-                    <source src="./assets/hrdt/videos/cup_place/scratch/2.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
+            
+            <!-- H-RDT w/o Human Videos -->
+            <div class="column is-5">
+              <div class="has-text-centered" style="margin-bottom: 1rem;">
+                <h4 class="title is-5">H-RDT w/o Human (Scratch)</h4>
               </div>
-              <button class="carousel-controls carousel-prev" onclick="changeSlide('cup-place-scratch-carousel', -1)">
-                <i class="fas fa-chevron-left"></i>
-              </button>
-              <button class="carousel-controls carousel-next" onclick="changeSlide('cup-place-scratch-carousel', 1)">
-                <i class="fas fa-chevron-right"></i>
-              </button>
-              <div class="carousel-indicators">
-                <span class="carousel-indicator active" onclick="goToSlide('cup-place-scratch-carousel', 0)"></span>
-                <span class="carousel-indicator" onclick="goToSlide('cup-place-scratch-carousel', 1)"></span>
+              <div class="video-carousel" id="cup-place-scratch-carousel">
+                <div class="video-slides-container">
+                  <div class="video-slide">
+                    <video controls style="width: 100%; max-width: 400px; height: auto;">
+                      <source src="./assets/hrdt/videos/cup_place/scratch/1.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <div class="video-slide">
+                    <video controls style="width: 100%; max-width: 400px; height: auto;">
+                      <source src="./assets/hrdt/videos/cup_place/scratch/2.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+                <button class="carousel-controls carousel-prev" onclick="changeSlide('cup-place-scratch-carousel', -1)">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-controls carousel-next" onclick="changeSlide('cup-place-scratch-carousel', 1)">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="carousel-indicators">
+                  <span class="carousel-indicator active" onclick="goToSlide('cup-place-scratch-carousel', 0)"></span>
+                  <span class="carousel-indicator" onclick="goToSlide('cup-place-scratch-carousel', 1)"></span>
+                </div>
               </div>
             </div>
           </div>
@@ -417,92 +389,85 @@
         <div class="content has-text-justified">
           <h3 class="title is-4 has-text-centered" style="margin-top: 3rem;">Towel Folding Task</h3>
           
-          <!-- H-RDT Results (Success) -->
-          <div class="video-comparison-section" style="margin-bottom: 3rem;">
-            <div class="has-text-centered" style="margin-bottom: 1rem;">
-              <h4 class="title is-5">
-                <span class="icon has-text-success" style="margin-right: 0.5rem;">
-                  <i class="fas fa-check-circle"></i>
-                </span>
-                H-RDT (Success)
-              </h4>
-            </div>
-            <div class="video-carousel" id="fold-towel-hrdt-carousel">
-              <div class="video-slides-container">
-                <div class="video-slide">
-                  <video controls style="width: 100%; max-width: 600px; height: auto;">
-                    <source src="./assets/hrdt/videos/fold_towel/hrdt/1.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>
+          <!-- Video Comparison Row -->
+          <div class="columns is-centered" style="margin-top: 2rem;">
+            <!-- H-RDT Videos -->
+            <div class="column is-5">
+              <div class="has-text-centered" style="margin-bottom: 1rem;">
+                <h4 class="title is-5">H-RDT</h4>
+              </div>
+              <div class="video-carousel" id="fold-towel-hrdt-carousel">
+                <div class="video-slides-container">
+                  <div class="video-slide">
+                    <video controls style="width: 100%; max-width: 400px; height: auto;">
+                      <source src="./assets/hrdt/videos/fold_towel/hrdt/1.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <div class="video-slide">
+                    <video controls style="width: 100%; max-width: 400px; height: auto;">
+                      <source src="./assets/hrdt/videos/fold_towel/hrdt/2.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <div class="video-slide">
+                    <video controls style="width: 100%; max-width: 400px; height: auto;">
+                      <source src="./assets/hrdt/videos/fold_towel/hrdt/4.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <div class="video-slide">
+                    <video controls style="width: 100%; max-width: 400px; height: auto;">
+                      <source src="./assets/hrdt/videos/fold_towel/hrdt/5.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
                 </div>
-                <div class="video-slide">
-                  <video controls style="width: 100%; max-width: 600px; height: auto;">
-                    <source src="./assets/hrdt/videos/fold_towel/hrdt/2.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-                <div class="video-slide">
-                  <video controls style="width: 100%; max-width: 600px; height: auto;">
-                    <source src="./assets/hrdt/videos/fold_towel/hrdt/4.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-                <div class="video-slide">
-                  <video controls style="width: 100%; max-width: 600px; height: auto;">
-                    <source src="./assets/hrdt/videos/fold_towel/hrdt/5.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>
+                <button class="carousel-controls carousel-prev" onclick="changeSlide('fold-towel-hrdt-carousel', -1)">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-controls carousel-next" onclick="changeSlide('fold-towel-hrdt-carousel', 1)">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="carousel-indicators">
+                  <span class="carousel-indicator active" onclick="goToSlide('fold-towel-hrdt-carousel', 0)"></span>
+                  <span class="carousel-indicator" onclick="goToSlide('fold-towel-hrdt-carousel', 1)"></span>
+                  <span class="carousel-indicator" onclick="goToSlide('fold-towel-hrdt-carousel', 2)"></span>
+                  <span class="carousel-indicator" onclick="goToSlide('fold-towel-hrdt-carousel', 3)"></span>
                 </div>
               </div>
-              <button class="carousel-controls carousel-prev" onclick="changeSlide('fold-towel-hrdt-carousel', -1)">
-                <i class="fas fa-chevron-left"></i>
-              </button>
-              <button class="carousel-controls carousel-next" onclick="changeSlide('fold-towel-hrdt-carousel', 1)">
-                <i class="fas fa-chevron-right"></i>
-              </button>
-              <div class="carousel-indicators">
-                <span class="carousel-indicator active" onclick="goToSlide('fold-towel-hrdt-carousel', 0)"></span>
-                <span class="carousel-indicator" onclick="goToSlide('fold-towel-hrdt-carousel', 1)"></span>
-                <span class="carousel-indicator" onclick="goToSlide('fold-towel-hrdt-carousel', 2)"></span>
-                <span class="carousel-indicator" onclick="goToSlide('fold-towel-hrdt-carousel', 3)"></span>
-              </div>
             </div>
-          </div>
-
-          <!-- Scratch Results (Failure) -->
-          <div class="video-comparison-section" style="margin-bottom: 3rem;">
-            <div class="has-text-centered" style="margin-bottom: 1rem;">
-              <h4 class="title is-5">
-                <span class="icon has-text-danger" style="margin-right: 0.5rem;">
-                  <i class="fas fa-times-circle"></i>
-                </span>
-                Scratch (Failure)
-              </h4>
-            </div>
-            <div class="video-carousel" id="fold-towel-scratch-carousel">
-              <div class="video-slides-container">
-                <div class="video-slide">
-                  <video controls style="width: 100%; max-width: 600px; height: auto;">
-                    <source src="./assets/hrdt/videos/fold_towel/scratch/3.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-                <div class="video-slide">
-                  <video controls style="width: 100%; max-width: 600px; height: auto;">
-                    <source src="./assets/hrdt/videos/fold_towel/scratch/6.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
+            
+            <!-- H-RDT w/o Human Videos -->
+            <div class="column is-5">
+              <div class="has-text-centered" style="margin-bottom: 1rem;">
+                <h4 class="title is-5">H-RDT w/o Human (Scratch)</h4>
               </div>
-              <button class="carousel-controls carousel-prev" onclick="changeSlide('fold-towel-scratch-carousel', -1)">
-                <i class="fas fa-chevron-left"></i>
-              </button>
-              <button class="carousel-controls carousel-next" onclick="changeSlide('fold-towel-scratch-carousel', 1)">
-                <i class="fas fa-chevron-right"></i>
-              </button>
-              <div class="carousel-indicators">
-                <span class="carousel-indicator active" onclick="goToSlide('fold-towel-scratch-carousel', 0)"></span>
-                <span class="carousel-indicator" onclick="goToSlide('fold-towel-scratch-carousel', 1)"></span>
+              <div class="video-carousel" id="fold-towel-scratch-carousel">
+                <div class="video-slides-container">
+                  <div class="video-slide">
+                    <video controls style="width: 100%; max-width: 400px; height: auto;">
+                      <source src="./assets/hrdt/videos/fold_towel/scratch/3.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <div class="video-slide">
+                    <video controls style="width: 100%; max-width: 400px; height: auto;">
+                      <source src="./assets/hrdt/videos/fold_towel/scratch/6.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+                <button class="carousel-controls carousel-prev" onclick="changeSlide('fold-towel-scratch-carousel', -1)">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-controls carousel-next" onclick="changeSlide('fold-towel-scratch-carousel', 1)">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="carousel-indicators">
+                  <span class="carousel-indicator active" onclick="goToSlide('fold-towel-scratch-carousel', 0)"></span>
+                  <span class="carousel-indicator" onclick="goToSlide('fold-towel-scratch-carousel', 1)"></span>
+                </div>
               </div>
             </div>
           </div>
@@ -510,12 +475,9 @@
         
         <!-- Video Information -->
         <div class="content has-text-justified" style="margin-top: 3rem;">
-          <div class="notification is-light has-text-centered">
+          <div class="has-text-centered">
             <p class="is-size-6 has-text-grey-dark">
-              <strong>Note:</strong> All videos are ✖️5 speed up
-            </p>
-            <p class="is-size-6 has-text-grey" style="margin-top: 0.5rem; font-style: italic;">
-              More inference videos coming soon
+              <strong>Note:</strong> Videos are ✖️5 speed up, more demos coming soon
             </p>
           </div>
         </div>
@@ -533,11 +495,7 @@
         
         <div class="has-text-centered my-5">
           <figure class="image">
-<<<<<<< HEAD
             <img src="./assets/hrdt/figure4.png" alt="Real-world Task Definitions" style="max-width: 120%; height: auto; display: block; margin: 0 auto;">
-=======
-            <img src="./assets/hrdt/figure4.png" alt="Real-world Task Definitions" style="max-width: 90%; height: auto; display: block; margin: 0 auto;">
->>>>>>> ccfd9b8164daa220ae0e5cb3027f468683c41198
           </figure>
           <p class="has-text-grey is-size-6">Figure 4: Task definition of real-world experiments.</p>
         </div>
