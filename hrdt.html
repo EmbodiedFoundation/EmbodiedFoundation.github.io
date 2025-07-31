@@ -33,6 +33,103 @@
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="icon" href="./favicon.ico">
+  
+  <!-- Video Carousel Styles -->
+  <style>
+    .video-carousel {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .video-slides-container {
+      display: flex;
+      transition: transform 0.3s ease-in-out;
+      width: 100%;
+    }
+    
+    .video-slide {
+      flex: 0 0 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .video-slide video {
+      width: 100%;
+      height: auto;
+      max-width: 600px;
+    }
+    
+    .carousel-controls {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transition: background 0.3s ease;
+    }
+    
+    .carousel-controls:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+    
+    .carousel-prev {
+      left: 10px;
+    }
+    
+    .carousel-next {
+      right: 10px;
+    }
+    
+    .carousel-indicators {
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+      gap: 8px;
+    }
+    
+    .carousel-indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ddd;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    
+    .carousel-indicator.active {
+      background: #007bff;
+    }
+    
+    .video-comparison-section {
+      margin-bottom: 3rem;
+    }
+    
+    .video-comparison-section h4 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    
+    .video-comparison-section .icon {
+      font-size: 1.2em;
+    }
+  </style>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -52,11 +149,21 @@
   </div>
   <div class="navbar-menu">
     <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://github.com/thu-ml/">
-      <span class="icon">
-          <i class="fas fa-home"></i>
-      </span>
-      </a>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://github.com/thu-ml/">
+            TSAIL Group
+          </a>
+          <a class="navbar-item" href="https://embodiedfoundation.github.io/vidar_anypos">
+            Vidar & AnyPos
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </nav>
@@ -105,7 +212,7 @@
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
                   </span>
-                  <span>arXiv (Coming Soon)</span>
+                  <span>arXiv</span>
                 </a>
               </span>
               <!-- Code Link. -->
@@ -139,11 +246,11 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Overview</h2>
+        <h2 class="title is-3 has-text-centered">Overview</h2>
         
         <div class="has-text-centered my-5">
           <figure class="image">
-            <img src="./assets/hrdt/figure1.jpg" alt="H-RDT Overview" style="max-width: 80%; height: auto;">
+            <img src="./assets/hrdt/figure1.jpg" alt="H-RDT Overview" style="max-width: 120%; height: auto; display: block; margin: 0 auto;">
           </figure>
           <p class="has-text-grey is-size-6">Figure 1: Overview of H-RDT. A human-to-robotics diffusion transformer with two-stage training.</p>
         </div>
@@ -173,48 +280,28 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">H-RDT: Human to Robotics Diffusion Transformer</h2>
+        <h2 class="title is-3 has-text-centered">H-RDT: Human to Robotics Diffusion Transformer</h2>
         
         <!-- Architecture Overview -->
         <div class="has-text-centered my-5">
           <figure class="image">
-            <img src="./assets/hrdt/figure2.png" alt="H-RDT Architecture" style="max-width: 90%; height: auto;">
+            <img src="./assets/hrdt/figure2.png" alt="H-RDT Architecture" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
           </figure>
-          <p class="has-text-grey is-size-6">Figure 2: H-RDT framework. Our approach consists of two main stages: (1) pre-training on large-scale human manipulation data with 48-dimensional hand pose representations, and (2) cross-embodiment fine-tuning with modular action encoders and decoders adapted to specific robot action spaces.</p>
+          <p class="has-text-grey is-size-6">Figure 2: H-RDT framework.</p>
         </div>
         
         <div class="content has-text-justified">
-          <h3 class="title is-4">Key Techniques</h3>
+          <h3 class="title is-4 has-text-centered">Key Techniques</h3>
           
           <ul>
             <li>
-              <strong>Human Action Representation Design:</strong> H-RDT uses a unified 48-dimensional action space that captures essential bimanual manipulation information:
-              <ul style="margin-top: 0.5rem;">
-                <li><strong>Bilateral wrist poses</strong>: Position (3D) + orientation (6D rotation) for both hands = 18 dimensions</li>
-                <li><strong>Fingertip positions</strong>: 3D coordinates for all 5 fingers on both hands = 30 dimensions</li>
-                <li><strong>Total</strong>: 48 dimensions capturing essential bimanual dexterous manipulation patterns</li>
-              </ul>
+              <strong>Human Action Representation Design:</strong> H-RDT uses a unified 48-dimensional action space capturing bilateral wrist poses (position + 6D rotation) and fingertip positions for all 5 fingers on both hands, totaling 48 dimensions of essential bimanual dexterous manipulation patterns.
             </li>
-            <li style="margin-top: 1rem;">
-              <strong>Two-Stage Training Paradigm:</strong>
-              <ul style="margin-top: 0.5rem;">
-                <li>
-                  <strong>Stage 1: Human Data Pre-training</strong>
-                  <ul style="margin-top: 0.3rem;">
-                    <li>Train on complete <strong>EgoDex dataset</strong> (338K+ trajectories, 194 manipulation tasks, 829 hours)</li>
-                    <li>Learn general manipulation priors from human demonstrations</li>
-                    <li>Develop robust 48D action representations for dexterous bimanual manipulation</li>
-                  </ul>
-                </li>
-                <li style="margin-top: 0.8rem;">
-                  <strong>Stage 2: Cross-Embodiment Fine-tuning</strong>
-                  <ul style="margin-top: 0.3rem;">
-                    <li>Transfer vision encoder, language encoder, and transformer backbone weights</li>
-                    <li>Re-initialize action adapters for target robot action space (e.g., 14D for dual 7-DOF arms)</li>
-                    <li>Preserve learned manipulation semantics while adapting to robot morphologies</li>
-                  </ul>
-                </li>
-              </ul>
+            <li>
+              <strong>Two-Stage Training Paradigm:</strong> Our approach consists of two main stages: (1) pre-training on large-scale human manipulation data with 48-dimensional hand pose representations using the complete EgoDex dataset (338K+ trajectories, 194 manipulation tasks, 829 hours), and (2) cross-embodiment fine-tuning with modular action encoders and decoders adapted to specific robot action spaces.
+            </li>
+            <li>
+              <strong>Diffusion Transformer Architecture:</strong> Built on a diffusion transformer with 2B parameters, H-RDT uses flow matching to model complex action distributions and achieve robust manipulation capabilities.
             </li>
           </ul>
         </div>
@@ -228,12 +315,201 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">H-RDT Inference Video Samples</h2>
+        <h2 class="title is-3 has-text-centered">H-RDT Inference Video Samples</h2>
         
+        <!-- Cup Placement Task -->
         <div class="content has-text-justified">
-          <p class="has-text-centered" style="margin-top: 2rem; font-style: italic;">
-            More inference videos coming soon
-          </p>
+          <h3 class="title is-4 has-text-centered" style="margin-top: 3rem;">Cup Placement Task</h3>
+          
+          <!-- H-RDT Results (Success) -->
+          <div class="video-comparison-section" style="margin-bottom: 3rem;">
+            <div class="has-text-centered" style="margin-bottom: 1rem;">
+              <h4 class="title is-5">
+                <span class="icon has-text-success" style="margin-right: 0.5rem;">
+                  <i class="fas fa-check-circle"></i>
+                </span>
+                H-RDT (Success)
+              </h4>
+            </div>
+            <div class="video-carousel" id="cup-place-hrdt-carousel">
+              <div class="video-slides-container">
+                <div class="video-slide">
+                  <video controls style="width: 100%; max-width: 600px; height: auto;">
+                    <source src="./assets/hrdt/videos/cup_place/hrdt/3.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                <div class="video-slide">
+                  <video controls style="width: 100%; max-width: 600px; height: auto;">
+                    <source src="./assets/hrdt/videos/cup_place/hrdt/4.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                <div class="video-slide">
+                  <video controls style="width: 100%; max-width: 600px; height: auto;">
+                    <source src="./assets/hrdt/videos/cup_place/hrdt/5.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+              <button class="carousel-controls carousel-prev" onclick="changeSlide('cup-place-hrdt-carousel', -1)">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="carousel-controls carousel-next" onclick="changeSlide('cup-place-hrdt-carousel', 1)">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+              <div class="carousel-indicators">
+                <span class="carousel-indicator active" onclick="goToSlide('cup-place-hrdt-carousel', 0)"></span>
+                <span class="carousel-indicator" onclick="goToSlide('cup-place-hrdt-carousel', 1)"></span>
+                <span class="carousel-indicator" onclick="goToSlide('cup-place-hrdt-carousel', 2)"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scratch Results (Failure) -->
+          <div class="video-comparison-section" style="margin-bottom: 3rem;">
+            <div class="has-text-centered" style="margin-bottom: 1rem;">
+              <h4 class="title is-5">
+                <span class="icon has-text-danger" style="margin-right: 0.5rem;">
+                  <i class="fas fa-times-circle"></i>
+                </span>
+                Scratch (Failure)
+              </h4>
+            </div>
+            <div class="video-carousel" id="cup-place-scratch-carousel">
+              <div class="video-slides-container">
+                <div class="video-slide">
+                  <video controls style="width: 100%; max-width: 600px; height: auto;">
+                    <source src="./assets/hrdt/videos/cup_place/scratch/1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                <div class="video-slide">
+                  <video controls style="width: 100%; max-width: 600px; height: auto;">
+                    <source src="./assets/hrdt/videos/cup_place/scratch/2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+              <button class="carousel-controls carousel-prev" onclick="changeSlide('cup-place-scratch-carousel', -1)">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="carousel-controls carousel-next" onclick="changeSlide('cup-place-scratch-carousel', 1)">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+              <div class="carousel-indicators">
+                <span class="carousel-indicator active" onclick="goToSlide('cup-place-scratch-carousel', 0)"></span>
+                <span class="carousel-indicator" onclick="goToSlide('cup-place-scratch-carousel', 1)"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Towel Folding Task -->
+        <div class="content has-text-justified">
+          <h3 class="title is-4 has-text-centered" style="margin-top: 3rem;">Towel Folding Task</h3>
+          
+          <!-- H-RDT Results (Success) -->
+          <div class="video-comparison-section" style="margin-bottom: 3rem;">
+            <div class="has-text-centered" style="margin-bottom: 1rem;">
+              <h4 class="title is-5">
+                <span class="icon has-text-success" style="margin-right: 0.5rem;">
+                  <i class="fas fa-check-circle"></i>
+                </span>
+                H-RDT (Success)
+              </h4>
+            </div>
+            <div class="video-carousel" id="fold-towel-hrdt-carousel">
+              <div class="video-slides-container">
+                <div class="video-slide">
+                  <video controls style="width: 100%; max-width: 600px; height: auto;">
+                    <source src="./assets/hrdt/videos/fold_towel/hrdt/1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                <div class="video-slide">
+                  <video controls style="width: 100%; max-width: 600px; height: auto;">
+                    <source src="./assets/hrdt/videos/fold_towel/hrdt/2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                <div class="video-slide">
+                  <video controls style="width: 100%; max-width: 600px; height: auto;">
+                    <source src="./assets/hrdt/videos/fold_towel/hrdt/4.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                <div class="video-slide">
+                  <video controls style="width: 100%; max-width: 600px; height: auto;">
+                    <source src="./assets/hrdt/videos/fold_towel/hrdt/5.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+              <button class="carousel-controls carousel-prev" onclick="changeSlide('fold-towel-hrdt-carousel', -1)">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="carousel-controls carousel-next" onclick="changeSlide('fold-towel-hrdt-carousel', 1)">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+              <div class="carousel-indicators">
+                <span class="carousel-indicator active" onclick="goToSlide('fold-towel-hrdt-carousel', 0)"></span>
+                <span class="carousel-indicator" onclick="goToSlide('fold-towel-hrdt-carousel', 1)"></span>
+                <span class="carousel-indicator" onclick="goToSlide('fold-towel-hrdt-carousel', 2)"></span>
+                <span class="carousel-indicator" onclick="goToSlide('fold-towel-hrdt-carousel', 3)"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scratch Results (Failure) -->
+          <div class="video-comparison-section" style="margin-bottom: 3rem;">
+            <div class="has-text-centered" style="margin-bottom: 1rem;">
+              <h4 class="title is-5">
+                <span class="icon has-text-danger" style="margin-right: 0.5rem;">
+                  <i class="fas fa-times-circle"></i>
+                </span>
+                Scratch (Failure)
+              </h4>
+            </div>
+            <div class="video-carousel" id="fold-towel-scratch-carousel">
+              <div class="video-slides-container">
+                <div class="video-slide">
+                  <video controls style="width: 100%; max-width: 600px; height: auto;">
+                    <source src="./assets/hrdt/videos/fold_towel/scratch/3.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                <div class="video-slide">
+                  <video controls style="width: 100%; max-width: 600px; height: auto;">
+                    <source src="./assets/hrdt/videos/fold_towel/scratch/6.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+              <button class="carousel-controls carousel-prev" onclick="changeSlide('fold-towel-scratch-carousel', -1)">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="carousel-controls carousel-next" onclick="changeSlide('fold-towel-scratch-carousel', 1)">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+              <div class="carousel-indicators">
+                <span class="carousel-indicator active" onclick="goToSlide('fold-towel-scratch-carousel', 0)"></span>
+                <span class="carousel-indicator" onclick="goToSlide('fold-towel-scratch-carousel', 1)"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Video Information -->
+        <div class="content has-text-justified" style="margin-top: 3rem;">
+          <div class="notification is-light has-text-centered">
+            <p class="is-size-6 has-text-grey-dark">
+              <strong>Note:</strong> All videos are ✖️5 speed up
+            </p>
+            <p class="is-size-6 has-text-grey" style="margin-top: 0.5rem; font-style: italic;">
+              More inference videos coming soon
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -245,11 +521,11 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Real-world Task Definitions</h2>
+        <h2 class="title is-3 has-text-centered">Real-world Task Definitions</h2>
         
         <div class="has-text-centered my-5">
           <figure class="image">
-            <img src="./assets/hrdt/figure4.png" alt="Real-world Task Definitions" style="max-width: 90%; height: auto;">
+            <img src="./assets/hrdt/figure4.png" alt="Real-world Task Definitions" style="max-width: 120%; height: auto; display: block; margin: 0 auto;">
           </figure>
           <p class="has-text-grey is-size-6">Figure 4: Task definition of real-world experiments.</p>
         </div>
@@ -328,6 +604,111 @@
     </div>
   </div>
 </footer>
+
+<!-- Video Carousel JavaScript -->
+<script>
+// 存储每个轮播的当前位置
+const carouselPositions = {
+  'cup-place-hrdt-carousel': 0,
+  'cup-place-scratch-carousel': 0,
+  'fold-towel-hrdt-carousel': 0,
+  'fold-towel-scratch-carousel': 0
+};
+
+// 获取轮播的幻灯片数量
+function getSlideCount(carouselId) {
+  const carousel = document.getElementById(carouselId);
+  return carousel.querySelectorAll('.video-slide').length;
+}
+
+// 更新轮播显示
+function updateCarousel(carouselId) {
+  const carousel = document.getElementById(carouselId);
+  const slidesContainer = carousel.querySelector('.video-slides-container');
+  const indicators = carousel.querySelectorAll('.carousel-indicator');
+  const currentPosition = carouselPositions[carouselId];
+  
+  // 移动幻灯片容器
+  slidesContainer.style.transform = `translateX(-${currentPosition * 100}%)`;
+  
+  // 更新指示器
+  indicators.forEach((indicator, index) => {
+    indicator.classList.toggle('active', index === currentPosition);
+  });
+  
+  // 暂停所有视频
+  const videos = carousel.querySelectorAll('video');
+  videos.forEach(video => {
+    video.pause();
+  });
+}
+
+// 切换幻灯片
+function changeSlide(carouselId, direction) {
+  const slideCount = getSlideCount(carouselId);
+  const currentPosition = carouselPositions[carouselId];
+  
+  // 计算新位置
+  let newPosition = currentPosition + direction;
+  
+  // 处理边界情况
+  if (newPosition < 0) {
+    newPosition = slideCount - 1;
+  } else if (newPosition >= slideCount) {
+    newPosition = 0;
+  }
+  
+  carouselPositions[carouselId] = newPosition;
+  updateCarousel(carouselId);
+}
+
+// 跳转到指定幻灯片
+function goToSlide(carouselId, slideIndex) {
+  carouselPositions[carouselId] = slideIndex;
+  updateCarousel(carouselId);
+}
+
+// 页面加载完成后初始化轮播
+document.addEventListener('DOMContentLoaded', function() {
+  // 初始化所有轮播
+  Object.keys(carouselPositions).forEach(carouselId => {
+    updateCarousel(carouselId);
+  });
+  
+  // 为所有视频添加点击播放/暂停功能
+  const videos = document.querySelectorAll('.video-carousel video');
+  videos.forEach(video => {
+    video.addEventListener('click', function() {
+      if (video.paused) {
+        // 暂停其他正在播放的视频
+        videos.forEach(otherVideo => {
+          if (otherVideo !== video) {
+            otherVideo.pause();
+          }
+        });
+        video.play();
+      } else {
+        video.pause();
+      }
+    });
+  });
+});
+
+// 键盘导航支持
+document.addEventListener('keydown', function(e) {
+  const focusedCarousel = document.querySelector('.video-carousel:hover');
+  if (focusedCarousel) {
+    const carouselId = focusedCarousel.id;
+    if (e.key === 'ArrowLeft') {
+      changeSlide(carouselId, -1);
+      e.preventDefault();
+    } else if (e.key === 'ArrowRight') {
+      changeSlide(carouselId, 1);
+      e.preventDefault();
+    }
+  }
+});
+</script>
 
 </body>
 </html> 
