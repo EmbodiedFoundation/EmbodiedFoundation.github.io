@@ -139,53 +139,41 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Imitation learning for robotic manipulation faces a fundamental challenge: <strong>the scarcity of large-scale, high-quality robot demonstration data</strong>. Recent robotic foundation models often pre-train on cross-embodiment robot datasets to increase data scale, while they face significant limitations as the diverse morphologies and action spaces across different robot embodiments make unified training challenging.
-          </p>
-          <p>
-            In this paper, we present <strong>H-RDT (Human to Robotics Diffusion Transformer)</strong>, a novel approach that leverages human manipulation data to enhance robot manipulation capabilities. Our key insight is that <strong>large-scale egocentric human manipulation videos with paired 3D hand pose annotations provide rich behavioral priors</strong> that capture natural manipulation strategies and can benefit robotic policy learning.
-          </p>
-          <p>
-            We introduce a <strong>two-stage training paradigm</strong>: (1) pre-training on large-scale egocentric human manipulation data, and (2) cross-embodiment fine-tuning on robot-specific data with modular action encoders and decoders. Built on a diffusion transformer architecture with <strong>2B parameters</strong>, H-RDT uses <strong>flow matching</strong> to model complex action distributions. The modular design of action encoder and decoder components enables effective knowledge transfer from the unified human embodiment to diverse robot platforms through efficient fine-tuning.
-          </p>
-          <p>
-            Extensive evaluations encompassing both simulation and real-world experiments, single-task and multitask scenarios, as well as few-shot learning and robustness assessments, demonstrate that H-RDT outperforms training from scratch and existing state-of-the-art methods, including <strong>π₀ and RDT</strong>, achieving significant improvements of <strong>13.9%</strong> and <strong>40.5%</strong> over training from scratch in simulation and real-world experiments, respectively. The results validate our core hypothesis that human manipulation data can serve as a powerful foundation for learning bimanual robotic manipulation policies.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Performance Overview -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
         <h2 class="title is-3">Overview</h2>
+        
         <div class="has-text-centered my-5">
           <figure class="image">
-            <img src="./assets/hrdt/figure1.png" alt="H-RDT Performance Overview" style="max-width: 70%; height: auto;">
+            <img src="./assets/hrdt/figure1.jpg" alt="H-RDT Overview" style="max-width: 80%; height: auto;">
           </figure>
           <p class="has-text-grey is-size-6">Figure 1: Overview of H-RDT. A human-to-robotics diffusion transformer with two-stage training.</p>
         </div>
         <div class="content has-text-justified">
-          <p>
-            H-RDT demonstrates superior performance across both simulation and real-world scenarios, achieving significant improvements of <strong>13.9%</strong> and <strong>40.5%</strong> over training from scratch in simulation and real-world experiments, respectively.
-          </p>
+          <ul>
+            <li>
+              Imitation learning for robotic manipulation faces a fundamental challenge: <strong>the scarcity of large-scale, high-quality robot demonstration data</strong>. Recent robotic foundation models often pre-train on cross-embodiment robot datasets to increase data scale, while they face significant limitations as the diverse morphologies and action spaces across different robot embodiments make unified training challenging.
+            </li>
+            <li>
+              We present <strong>H-RDT (Human to Robotics Diffusion Transformer)</strong>, a novel approach that leverages human manipulation data to enhance robot manipulation capabilities. Our key insight is that <strong>large-scale egocentric human manipulation videos with paired 3D hand pose annotations provide rich behavioral priors</strong> that capture natural manipulation strategies and can benefit robotic policy learning.
+            </li>
+            <li>
+              We introduce a <strong>two-stage training paradigm</strong>: (1) pre-training on large-scale egocentric human manipulation data, and (2) cross-embodiment fine-tuning on robot-specific data with modular action encoders and decoders. Built on a diffusion transformer architecture with <strong>2B parameters</strong>, H-RDT uses <strong>flow matching</strong> to model complex action distributions.
+            </li>
+            <li>
+              Extensive evaluations encompassing both simulation and real-world experiments, single-task and multitask scenarios, as well as few-shot learning and robustness assessments, demonstrate that H-RDT outperforms training from scratch and existing state-of-the-art methods, including <strong>π₀ and RDT</strong>, achieving significant improvements of <strong>13.9%</strong> and <strong>40.5%</strong> over training from scratch in simulation and real-world experiments, respectively.
+            </li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- H-RDT: Human to Robotics Diffusion Transformer -->
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Method</h2>
+        <h2 class="title is-3">H-RDT: Human to Robotics Diffusion Transformer</h2>
         
         <!-- Architecture Overview -->
         <div class="has-text-centered my-5">
@@ -196,7 +184,9 @@
         </div>
         
         <div class="content has-text-justified">
-          <h3 class="title is-4">48-Dimensional Human Hand Action Representation</h3>
+          <h3 class="title is-4">Key Techniques</h3>
+          
+          <h4 class="title is-5">Human Action Representation Design</h4>
           <p>
             H-RDT uses a unified 48-dimensional action space that captures essential bimanual manipulation information:
           </p>
@@ -206,30 +196,38 @@
             <li><strong>Total</strong>: 48 dimensions capturing essential bimanual dexterous manipulation patterns</li>
           </ul>
 
-          <h3 class="title is-4">Two-Stage Training Paradigm</h3>
+          <h4 class="title is-5">Two-Stage Training Paradigm</h4>
           
-          <h4 class="title is-5">Stage 1: Human Data Pre-training</h4>
+          <h5 class="title is-6">Stage 1: Human Data Pre-training</h5>
           <ul>
             <li>Train on complete <strong>EgoDex dataset</strong> (338K+ trajectories, 194 manipulation tasks, 829 hours)</li>
             <li>Learn general manipulation priors from human demonstrations</li>
             <li>Develop robust 48D action representations for dexterous bimanual manipulation</li>
           </ul>
 
-          <h4 class="title is-5">Stage 2: Cross-Embodiment Fine-tuning</h4>
+          <h5 class="title is-6">Stage 2: Cross-Embodiment Fine-tuning</h5>
           <ul>
             <li>Transfer vision encoder, language encoder, and transformer backbone weights</li>
             <li>Re-initialize action adapters for target robot action space (e.g., 14D for dual 7-DOF arms)</li>
             <li>Preserve learned manipulation semantics while adapting to robot morphologies</li>
           </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-          <h3 class="title is-4">Key Technical Components</h3>
-          <ul>
-            <li><strong>Vision Encoder</strong>: DinoV2 + SigLIP-based image feature extraction</li>
-            <li><strong>Language Encoder</strong>: T5-XXL-based instruction encoding</li>
-            <li><strong>Modular Action Adapters</strong>: Handle 48D human poses (pre-train) and robot actions (fine-tune)</li>
-            <li><strong>Transformer Backbone</strong>: 16-layer transformer with ~2B parameters</li>
-            <li><strong>Flow Matching</strong>: Replaces traditional diffusion for stable and efficient training</li>
-          </ul>
+<!-- H-RDT Inference Video Samples -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">H-RDT Inference Video Samples</h2>
+        
+        <div class="content has-text-justified">
+          <p class="has-text-centered" style="margin-top: 2rem; font-style: italic;">
+            More inference videos coming soon
+          </p>
         </div>
       </div>
     </div>
@@ -270,31 +268,7 @@
 
 
 
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Main Contributions</h2>
-        <div class="content has-text-justified">
-          <ul>
-            <li>
-              <strong>Novel Framework for Human Manipulation Data</strong>: A novel framework for systematically leveraging large-scale egocentric human manipulation data to enhance robotic policy learning.
-            </li>
-            <li>
-              <strong>Modular Diffusion Transformer Architecture</strong>: A diffusion transformer architecture with modular human-to-robot transfer components that enables effective cross-embodiment knowledge transfer.
-            </li>
-            <li>
-              <strong>Comprehensive Empirical Validation</strong>: A comprehensive empirical validation demonstrating consistent improvements over state-of-the-art methods across simulation and real-world scenarios.
-            </li>
-            <li>
-              <strong>Human Manipulation Priors Insights</strong>: Insights into the value of human manipulation priors for sample-efficient robot learning, particularly in few-shot settings.
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <!-- BibTeX Citation -->
 <section class="section">
