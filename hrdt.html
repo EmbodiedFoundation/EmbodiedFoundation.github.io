@@ -186,30 +186,36 @@
         <div class="content has-text-justified">
           <h3 class="title is-4">Key Techniques</h3>
           
-          <h4 class="title is-5">Human Action Representation Design</h4>
-          <p>
-            H-RDT uses a unified 48-dimensional action space that captures essential bimanual manipulation information:
-          </p>
           <ul>
-            <li><strong>Bilateral wrist poses</strong>: Position (3D) + orientation (6D rotation) for both hands = 18 dimensions</li>
-            <li><strong>Fingertip positions</strong>: 3D coordinates for all 5 fingers on both hands = 30 dimensions</li>
-            <li><strong>Total</strong>: 48 dimensions capturing essential bimanual dexterous manipulation patterns</li>
-          </ul>
-
-          <h4 class="title is-5">Two-Stage Training Paradigm</h4>
-          
-          <h5 class="title is-6">Stage 1: Human Data Pre-training</h5>
-          <ul>
-            <li>Train on complete <strong>EgoDex dataset</strong> (338K+ trajectories, 194 manipulation tasks, 829 hours)</li>
-            <li>Learn general manipulation priors from human demonstrations</li>
-            <li>Develop robust 48D action representations for dexterous bimanual manipulation</li>
-          </ul>
-
-          <h5 class="title is-6">Stage 2: Cross-Embodiment Fine-tuning</h5>
-          <ul>
-            <li>Transfer vision encoder, language encoder, and transformer backbone weights</li>
-            <li>Re-initialize action adapters for target robot action space (e.g., 14D for dual 7-DOF arms)</li>
-            <li>Preserve learned manipulation semantics while adapting to robot morphologies</li>
+            <li>
+              <strong>Human Action Representation Design:</strong> H-RDT uses a unified 48-dimensional action space that captures essential bimanual manipulation information:
+              <ul style="margin-top: 0.5rem;">
+                <li><strong>Bilateral wrist poses</strong>: Position (3D) + orientation (6D rotation) for both hands = 18 dimensions</li>
+                <li><strong>Fingertip positions</strong>: 3D coordinates for all 5 fingers on both hands = 30 dimensions</li>
+                <li><strong>Total</strong>: 48 dimensions capturing essential bimanual dexterous manipulation patterns</li>
+              </ul>
+            </li>
+            <li style="margin-top: 1rem;">
+              <strong>Two-Stage Training Paradigm:</strong>
+              <ul style="margin-top: 0.5rem;">
+                <li>
+                  <strong>Stage 1: Human Data Pre-training</strong>
+                  <ul style="margin-top: 0.3rem;">
+                    <li>Train on complete <strong>EgoDex dataset</strong> (338K+ trajectories, 194 manipulation tasks, 829 hours)</li>
+                    <li>Learn general manipulation priors from human demonstrations</li>
+                    <li>Develop robust 48D action representations for dexterous bimanual manipulation</li>
+                  </ul>
+                </li>
+                <li style="margin-top: 0.8rem;">
+                  <strong>Stage 2: Cross-Embodiment Fine-tuning</strong>
+                  <ul style="margin-top: 0.3rem;">
+                    <li>Transfer vision encoder, language encoder, and transformer backbone weights</li>
+                    <li>Re-initialize action adapters for target robot action space (e.g., 14D for dual 7-DOF arms)</li>
+                    <li>Preserve learned manipulation semantics while adapting to robot morphologies</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
           </ul>
         </div>
       </div>
