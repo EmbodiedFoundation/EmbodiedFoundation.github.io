@@ -33,6 +33,90 @@
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="icon" href="./favicon.ico">
+  
+  <!-- Video Carousel Styles -->
+  <style>
+    .video-carousel {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .video-slides-container {
+      display: flex;
+      transition: transform 0.3s ease-in-out;
+      width: 100%;
+    }
+    
+    .video-slide {
+      flex: 0 0 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .video-slide video {
+      width: 100%;
+      height: auto;
+      max-width: 800px;
+    }
+    
+    .carousel-controls {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transition: background 0.3s ease;
+    }
+    
+    .carousel-controls:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+    
+    .carousel-prev {
+      left: 10px;
+    }
+    
+    .carousel-next {
+      right: 10px;
+    }
+    
+    .carousel-indicators {
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+      gap: 8px;
+    }
+    
+    .carousel-indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ddd;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    
+    .carousel-indicator.active {
+      background: #007bff;
+    }
+    
+
+  </style>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -52,11 +136,21 @@
   </div>
   <div class="navbar-menu">
     <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://github.com/thu-ml/">
-      <span class="icon">
-          <i class="fas fa-home"></i>
-      </span>
-      </a>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://github.com/thu-ml/">
+            TSAIL Group
+          </a>
+          <a class="navbar-item" href="https://embodiedfoundation.github.io/vidar_anypos">
+            Vidar & AnyPos
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </nav>
@@ -78,7 +172,10 @@
                 <a href="https://wzmsltw.github.io/">Tianwei Lin</a><sup>2</sup>,
             </span>
             <span class="author-block">
-                <a href="https://scholar.google.com/citations?user=HQfc8TEAAAAJ&hl=en">ZhiZhong Su</a><sup>2</sup>,
+                <a href="https://stormy-cheese-458.notion.site/Hengkai-Tan-22a9b6e0b5bb801782edc3771ff3ba37">Hengkai Tan</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=HQfc8TEAAAAJ&hl=en">Zhizhong Su</a><sup>2</sup>,
             </span>
             <span class="author-block">
               <a href="https://scholar.google.com/citations?user=dxN1_X0AAAAJ&hl=zh-CN&oi=ao">Hang Su</a><sup>1</sup>,
@@ -97,7 +194,7 @@
             <div class="publication-links">
               <!-- arXiv Link. -->
               <span class="link-block">
-                <a href="#"
+                <a href="https://arxiv.org/abs/2507.23523"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -136,45 +233,28 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Imitation learning for robotic manipulation faces a fundamental challenge: <strong>the scarcity of large-scale, high-quality robot demonstration data</strong>. While recent robotic foundation models often pre-train on cross-embodiment robot datasets, they face significant limitations: the diverse morphologies and action spaces across different robot embodiments make unified training challenging.
-          </p>
-          <p>
-            We present <strong>H-RDT (Human to Robotics Diffusion Transformer)</strong>, a novel approach that leverages human manipulation data to enhance robot manipulation capabilities. Our key insight is that <strong>large-scale egocentric human manipulation videos with paired 3D hand pose annotations provide rich behavioral priors</strong> that capture natural manipulation strategies and can benefit robotic policy learning.
-          </p>
-          <p>
-            We introduce a <strong>two-stage training paradigm</strong>: (1) pre-training on large-scale egocentric human manipulation data, and (2) cross-embodiment fine-tuning on robot-specific data with modular action encoders and decoders. Built on a diffusion transformer architecture with <strong>2B parameters</strong>, H-RDT uses <strong>flow matching</strong> to model complex action distributions. The modular design enables effective knowledge transfer from human embodiment to diverse robot platforms through efficient fine-tuning.
-          </p>
-          <p>
-            Extensive evaluations demonstrate that H-RDT outperforms training from scratch and existing state-of-the-art methods including Pi-0 and RDT, validating our core hypothesis that human manipulation data can serve as a powerful foundation for learning robust robotic manipulation policies.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Performance Overview -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Performance Overview</h2>
+        <h2 class="title is-3 has-text-centered">Overview</h2>
+        
         <div class="has-text-centered my-5">
           <figure class="image">
-            <img src="./assets/hrdt/figure1.png" alt="H-RDT Performance Overview" style="max-width: 70%; height: auto;">
+            <img src="./assets/hrdt/figure1.png" alt="H-RDT Overview" style="max-width: 120%; height: auto; display: block; margin: 0 auto;">
           </figure>
-          <p class="has-text-grey is-size-6">Figure 1: Performance overview on RoboTwin 2.0 multi-task evaluations and few-shot real-world experiments. H-RDT achieves 73.1% on simulation and 41.6% on real-world few-shot tasks, substantially outperforming all baselines.</p>
+          <p class="has-text-grey is-size-6">Figure 1: Overview of H-RDT. A human-to-robotics diffusion transformer with two-stage training.</p>
         </div>
         <div class="content has-text-justified">
-          <p>
-            H-RDT demonstrates superior performance across both simulation and real-world scenarios:
-          </p>
           <ul>
-            <li><strong>RoboTwin 2.0 Multi-task</strong>: 73.1% success rate vs. 55.6% (Pi0) and 40.2% (RDT)</li>
-            <li><strong>Few-shot Real World</strong>: 41.6% success rate vs. 31.2% (Pi0) and 17.6% (Scratch)</li>
+            <li>
+              Imitation learning for robotic manipulation faces a fundamental challenge: <strong>the scarcity of large-scale, high-quality robot demonstration data</strong>. Recent robotic foundation models often pre-train on cross-embodiment robot datasets to increase data scale, while they face significant limitations as the diverse morphologies and action spaces across different robot embodiments make unified training challenging.
+            </li>
+            <li>
+              We present <strong>H-RDT (Human to Robotics Diffusion Transformer)</strong>, a novel approach that leverages human manipulation data to enhance robot manipulation capabilities. Our key insight is that <strong>large-scale egocentric human manipulation videos with paired 3D hand pose annotations provide rich behavioral priors</strong> that capture natural manipulation strategies and can benefit robotic policy learning.
+            </li>
+            <li>
+              We introduce a <strong>two-stage training paradigm</strong>: (1) pre-training on large-scale egocentric human manipulation data, and (2) cross-embodiment fine-tuning on robot-specific data with modular action encoders and decoders. Built on a diffusion transformer architecture with <strong>2B parameters</strong>, H-RDT uses <strong>flow matching</strong> to model complex action distributions.
+            </li>
+            <li>
+              Extensive evaluations encompassing both simulation and real-world experiments, single-task and multitask scenarios, as well as few-shot learning and robustness assessments, demonstrate that H-RDT outperforms training from scratch and existing state-of-the-art methods, including <strong>π₀ and RDT</strong>, achieving significant improvements of <strong>13.9%</strong> and <strong>40.5%</strong> over training from scratch in simulation and real-world experiments, respectively.
+            </li>
           </ul>
         </div>
       </div>
@@ -182,159 +262,33 @@
   </div>
 </section>
 
+<!-- H-RDT: Human to Robotics Diffusion Transformer -->
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Method</h2>
+        <h2 class="title is-3 has-text-centered">H-RDT: Human to Robotics Diffusion Transformer</h2>
         
         <!-- Architecture Overview -->
         <div class="has-text-centered my-5">
           <figure class="image">
-            <img src="./assets/hrdt/figure2.png" alt="H-RDT Architecture" style="max-width: 90%; height: auto;">
+            <img src="./assets/hrdt/figure2.png" alt="H-RDT Architecture" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
           </figure>
-          <p class="has-text-grey is-size-6">Figure 2: H-RDT architecture overview showing the two-stage training paradigm with modular action encoders and decoders.</p>
+          <p class="has-text-grey is-size-6">Figure 2: H-RDT framework.</p>
         </div>
         
         <div class="content has-text-justified">
-          <h3 class="title is-4">48-Dimensional Human Hand Action Representation</h3>
-          <p>
-            H-RDT uses a unified 48-dimensional action space that captures essential bimanual manipulation information:
-          </p>
-          <ul>
-            <li><strong>Bilateral wrist poses</strong>: Position (3D) + orientation (6D rotation) for both hands = 18 dimensions</li>
-            <li><strong>Fingertip positions</strong>: 3D coordinates for all 5 fingers on both hands = 30 dimensions</li>
-            <li><strong>Total</strong>: 48 dimensions capturing essential bimanual dexterous manipulation patterns</li>
-          </ul>
-
-          <h3 class="title is-4">Two-Stage Training Paradigm</h3>
+          <h3 class="title is-4 has-text-centered">Key Techniques</h3>
           
-          <h4 class="title is-5">Stage 1: Human Data Pre-training</h4>
-          <ul>
-            <li>Train on complete <strong>EgoDx dataset</strong> (338K+ trajectories, 194 manipulation tasks, 829 hours)</li>
-            <li>Learn general manipulation priors from human demonstrations</li>
-            <li>Develop robust 48D action representations for dexterous bimanual manipulation</li>
-          </ul>
-
-          <h4 class="title is-5">Stage 2: Cross-Embodiment Fine-tuning</h4>
-          <ul>
-            <li>Transfer vision encoder, language encoder, and transformer backbone weights</li>
-            <li>Re-initialize action adapters for target robot action space (e.g., 14D for dual 7-DOF arms)</li>
-            <li>Preserve learned manipulation semantics while adapting to robot morphologies</li>
-          </ul>
-
-          <h3 class="title is-4">Key Technical Components</h3>
-          <ul>
-            <li><strong>Vision Encoder</strong>: DinoV2 + SigLIP-based image feature extraction</li>
-            <li><strong>Language Encoder</strong>: T5-XXL-based instruction encoding</li>
-            <li><strong>Modular Action Adapters</strong>: Handle 48D human poses (pre-train) and robot actions (fine-tune)</li>
-            <li><strong>Transformer Backbone</strong>: 16-layer transformer with ~2B parameters</li>
-            <li><strong>Flow Matching</strong>: Replaces traditional diffusion for stable and efficient training</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Experimental Results -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Experimental Results</h2>
-        
-        <h3 class="title is-4">Simulation Results on RoboTwin 2.0</h3>
-        
-        <h4 class="title is-5">Single-Task and Multi-Task Performance</h4>
-        <div class="content has-text-justified">
-          <p>
-            We evaluate H-RDT on the RoboTwin 2.0 benchmark across both single-task (13 tasks, 50 demonstrations each) and multi-task (45 tasks, 2250 demonstrations total) scenarios.
-          </p>
-        </div>
-        
-        <div class="columns is-centered my-5">
-          <div class="column is-6">
-            <div class="has-text-centered">
-              <figure class="image">
-                <img src="./assets/hrdt/table/table1.png" alt="Single-Task Results" style="max-width: 100%; height: auto;">
-              </figure>
-              <p class="has-text-grey is-size-6">Table 1: Single-task success rates (%) showing H-RDT's superior performance in both Easy and Hard modes.</p>
-            </div>
-          </div>
-          <div class="column is-6">
-            <div class="has-text-centered">
-              <figure class="image">
-                <img src="./assets/hrdt/table/table2.png" alt="Multi-Task Results" style="max-width: 100%; height: auto;">
-              </figure>
-              <p class="has-text-grey is-size-6">Table 2: Multi-task success rates (%) with H-RDT achieving 87.2% average success rate.</p>
-            </div>
-          </div>
-        </div>
-
-        <h4 class="title is-5">Cross-Embodiment Generalization</h4>
-        <div class="content has-text-justified">
-          <p>
-            To validate cross-embodiment transfer capabilities, we conduct multi-task experiments across different robotic embodiments in simulation, evaluating both Aloha-Agilex-1.0 and Franka-Panda platforms.
-          </p>
-        </div>
-        
-        <div class="has-text-centered my-5">
-          <figure class="image">
-            <img src="./assets/hrdt/figure3.png" alt="Cross-Embodiment Results" style="max-width: 70%; height: auto;">
-          </figure>
-          <p class="has-text-grey is-size-6">Figure 3: Cross-embodiment multi-task performance on RoboTwin 2.0 tasks. H-RDT demonstrates strong performance across different robotic morphologies.</p>
-        </div>
-
-        <h3 class="title is-4">Real-world Validation</h3>
-        
-        <h4 class="title is-5">Real-world Validation Results</h4>
-        <div class="content has-text-justified">
-          <p>
-            We validate H-RDT in challenging real-world settings: extreme few-shot learning (1-5 demonstrations per task) and cross-platform deployment across multiple robotic embodiments.
-          </p>
-        </div>
-        
-        <div class="columns is-centered my-5">
-          <div class="column is-6">
-            <div class="has-text-centered">
-              <figure class="image">
-                <img src="./assets/hrdt/table/table3.png" alt="Real-world Few-shot Results" style="max-width: 100%; height: auto;">
-              </figure>
-              <p class="has-text-grey is-size-6">Table 3: Few-shot learning results (1-5 demonstrations) showing H-RDT's superior sample efficiency at 41.6% success rate.</p>
-            </div>
-          </div>
-          <div class="column is-6">
-            <div class="has-text-centered">
-              <figure class="image">
-                <img src="./assets/hrdt/table/table5.png" alt="Cross-Platform Results" style="max-width: 100%; height: auto;">
-              </figure>
-              <p class="has-text-grey is-size-6">Table 4: Cross-platform validation results demonstrating H-RDT's effectiveness across different robotic embodiments.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="has-text-centered my-5">
-          <figure class="image">
-            <img src="./assets/hrdt/hrt_architecture.png" alt="H-RDT Detailed Architecture" style="max-width: 80%; height: auto;">
-          </figure>
-          <p class="has-text-grey is-size-6">Figure 4: Detailed H-RDT architecture showing the modular design and two-stage training paradigm.</p>
-        </div>
-        
-        <div class="content has-text-justified">
-          <h3 class="title is-4">Key Findings</h3>
           <ul>
             <li>
-              <strong>Simulation Excellence</strong>: H-RDT achieves 68.7% success rate in single-task and 87.2% in multi-task scenarios, substantially outperforming existing methods.
+              <strong>Human Action Representation Design:</strong> H-RDT uses a unified 48-dimensional action space capturing bilateral wrist poses (position + 6D rotation) and fingertip positions for all 5 fingers on both hands, totaling 48 dimensions of essential bimanual dexterous manipulation patterns.
             </li>
             <li>
-              <strong>Real-world Transfer</strong>: Demonstrates remarkable resilience in extreme few-shot settings (1-5 demonstrations), achieving 41.6% success rate compared to 31.2% for Pi-0.
+              <strong>Two-Stage Training Paradigm:</strong> Our approach consists of two main stages: (1) pre-training on large-scale human manipulation data with 48-dimensional hand pose representations using the complete EgoDex dataset (338K+ trajectories, 194 manipulation tasks, 829 hours), and (2) cross-embodiment fine-tuning with modular action encoders and decoders adapted to specific robot action spaces.
             </li>
             <li>
-              <strong>Cross-Embodiment Robustness</strong>: Consistent improvements across different robotic morphologies validate the cross-embodiment generalization capabilities.
-            </li>
-            <li>
-              <strong>Human Prior Benefits</strong>: The substantial improvements over training from scratch validate our core hypothesis that human manipulation data provides valuable inductive biases.
+              <strong>Diffusion Transformer Architecture:</strong> Built on a diffusion transformer with 2B parameters, H-RDT uses flow matching to model complex action distributions and achieve robust manipulation capabilities.
             </li>
           </ul>
         </div>
@@ -343,26 +297,324 @@
   </div>
 </section>
 
+<!-- H-RDT Inference Video Samples -->
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Main Contributions</h2>
+        <h2 class="title is-3 has-text-centered">H-RDT Inference Video Samples</h2>
+        
+        <!-- Towel Folding -->
         <div class="content has-text-justified">
+          <h3 class="title is-4 has-text-centered" style="margin-top: 3rem;">Towel Folding</h3>
+          
+          <!-- Video Comparison Row -->
+          <div class="columns is-centered" style="margin-top: 2rem;">
+            <!-- H-RDT Videos -->
+            <div class="column is-5">
+              <div class="has-text-centered" style="margin-bottom: 1rem;">
+                <h4 class="title is-5" style="display: flex; align-items: center; justify-content: center;">
+                  <span style="margin-right: 0.3rem; font-size: 1.2em;">✅</span>
+                  H-RDT
+                </h4>
+              </div>
+              <div class="video-carousel" id="fold-towel-hrdt-carousel">
+                <div class="video-slides-container">
+                  <div class="video-slide">
+                    <video controls style="width: 100%; max-width: 800px; height: auto;">
+                      <source src="./assets/hrdt/videos/fold_towel/hrdt/1.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <div class="video-slide">
+                    <video controls style="width: 100%; max-width: 800px; height: auto;">
+                      <source src="./assets/hrdt/videos/fold_towel/hrdt/2.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <div class="video-slide">
+                    <video controls style="width: 100%; max-width: 800px; height: auto;">
+                      <source src="./assets/hrdt/videos/fold_towel/hrdt/4.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <div class="video-slide">
+                    <video controls style="width: 100%; max-width: 800px; height: auto;">
+                      <source src="./assets/hrdt/videos/fold_towel/hrdt/5.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+                <button class="carousel-controls carousel-prev" onclick="changeSlide('fold-towel-hrdt-carousel', -1)">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-controls carousel-next" onclick="changeSlide('fold-towel-hrdt-carousel', 1)">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="carousel-indicators">
+                  <span class="carousel-indicator active" onclick="goToSlide('fold-towel-hrdt-carousel', 0)"></span>
+                  <span class="carousel-indicator" onclick="goToSlide('fold-towel-hrdt-carousel', 1)"></span>
+                  <span class="carousel-indicator" onclick="goToSlide('fold-towel-hrdt-carousel', 2)"></span>
+                  <span class="carousel-indicator" onclick="goToSlide('fold-towel-hrdt-carousel', 3)"></span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- H-RDT w/o Human Videos -->
+            <div class="column is-5">
+              <div class="has-text-centered" style="margin-bottom: 1rem;">
+                <h4 class="title is-5" style="display: flex; align-items: center; justify-content: center;">
+                  <span style="margin-right: 0.3rem; font-size: 1.2em;">❌</span>
+                  H-RDT w/o Human
+                </h4>
+              </div>
+              <div class="video-carousel" id="fold-towel-scratch-carousel">
+                <div class="video-slides-container">
+                  <div class="video-slide">
+                    <video controls style="width: 100%; max-width: 800px; height: auto;">
+                      <source src="./assets/hrdt/videos/fold_towel/scratch/3.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <div class="video-slide">
+                    <video controls style="width: 100%; max-width: 800px; height: auto;">
+                      <source src="./assets/hrdt/videos/fold_towel/scratch/6.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+                <button class="carousel-controls carousel-prev" onclick="changeSlide('fold-towel-scratch-carousel', -1)">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-controls carousel-next" onclick="changeSlide('fold-towel-scratch-carousel', 1)">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="carousel-indicators">
+                  <span class="carousel-indicator active" onclick="goToSlide('fold-towel-scratch-carousel', 0)"></span>
+                  <span class="carousel-indicator" onclick="goToSlide('fold-towel-scratch-carousel', 1)"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Task Description -->
+          <p class="has-text-centered is-size-6 has-text-grey" style="margin-top: 2rem;">
+            This task involves manipulating deformable towel with two sequential folds, where the first fold requires bimanual coordination to simultaneously grasp the towel's bottom edges.
+          </p>
+        </div>
+
+        <!-- Cup to Coaster Placement -->
+        <div class="content has-text-justified">
+          <h3 class="title is-4 has-text-centered" style="margin-top: 3rem;">Cup to Coaster Placement</h3>
+          
+          <!-- Video Comparison Row -->
+          <div class="columns is-centered" style="margin-top: 2rem;">
+            <!-- H-RDT Videos -->
+            <div class="column is-5">
+              <div class="has-text-centered" style="margin-bottom: 1rem;">
+                <h4 class="title is-5" style="display: flex; align-items: center; justify-content: center;">
+                  <span style="margin-right: 0.3rem; font-size: 1.2em;">✅</span>
+                  H-RDT
+                </h4>
+              </div>
+              <div class="video-carousel" id="cup-place-hrdt-carousel">
+                <div class="video-slides-container">
+                  <div class="video-slide">
+                    <video controls style="width: 100%; max-width: 800px; height: auto;">
+                      <source src="./assets/hrdt/videos/cup_place/hrdt/3.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <div class="video-slide">
+                    <video controls style="width: 100%; max-width: 800px; height: auto;">
+                      <source src="./assets/hrdt/videos/cup_place/hrdt/4.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <div class="video-slide">
+                    <video controls style="width: 100%; max-width: 800px; height: auto;">
+                      <source src="./assets/hrdt/videos/cup_place/hrdt/5.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+                <button class="carousel-controls carousel-prev" onclick="changeSlide('cup-place-hrdt-carousel', -1)">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-controls carousel-next" onclick="changeSlide('cup-place-hrdt-carousel', 1)">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="carousel-indicators">
+                  <span class="carousel-indicator active" onclick="goToSlide('cup-place-hrdt-carousel', 0)"></span>
+                  <span class="carousel-indicator" onclick="goToSlide('cup-place-hrdt-carousel', 1)"></span>
+                  <span class="carousel-indicator" onclick="goToSlide('cup-place-hrdt-carousel', 2)"></span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- H-RDT w/o Human Videos -->
+            <div class="column is-5">
+              <div class="has-text-centered" style="margin-bottom: 1rem;">
+                <h4 class="title is-5" style="display: flex; align-items: center; justify-content: center;">
+                  <span style="margin-right: 0.3rem; font-size: 1.2em;">❌</span>
+                  H-RDT w/o Human
+                </h4>
+              </div>
+              <div class="video-carousel" id="cup-place-scratch-carousel">
+                <div class="video-slides-container">
+                  <div class="video-slide">
+                    <video controls style="width: 100%; max-width: 800px; height: auto;">
+                      <source src="./assets/hrdt/videos/cup_place/scratch/1.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <div class="video-slide">
+                    <video controls style="width: 100%; max-width: 800px; height: auto;">
+                      <source src="./assets/hrdt/videos/cup_place/scratch/2.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+                <button class="carousel-controls carousel-prev" onclick="changeSlide('cup-place-scratch-carousel', -1)">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-controls carousel-next" onclick="changeSlide('cup-place-scratch-carousel', 1)">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="carousel-indicators">
+                  <span class="carousel-indicator active" onclick="goToSlide('cup-place-scratch-carousel', 0)"></span>
+                  <span class="carousel-indicator" onclick="goToSlide('cup-place-scratch-carousel', 1)"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Task Description -->
+          <p class="has-text-centered is-size-6 has-text-grey" style="margin-top: 2rem;">
+            This task requires spatial reasoning to select the appropriate arm (left or right) based on the cup's position relative to the coaster.
+          </p>
+        </div>
+        
+        <!-- Other Demos -->
+        <div class="content has-text-justified">
+          <h3 class="title is-4 has-text-centered" style="margin-top: 4rem;">Other Demos</h3>
+          
+          <!-- Other Demos Row -->
+          <div class="columns is-centered" style="margin-top: 2rem;">
+            <!-- Water Pouring -->
+            <div class="column is-3">
+              <div class="has-text-centered">
+                <video controls style="width: 100%; max-width: 500px; height: auto;">
+                  <source src="./assets/hrdt/videos/water_pouring.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <p class="has-text-centered is-size-6 has-text-grey-dark" style="margin-top: 1rem;">
+                  <strong>Water Pouring</strong>
+                </p>
+              </div>
+            </div>
+            
+            <!-- Plates Stacking -->
+            <div class="column is-3">
+              <div class="has-text-centered">
+                <video controls style="width: 100%; max-width: 500px; height: auto;">
+                  <source src="./assets/hrdt/videos/plates_stacking.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <p class="has-text-centered is-size-6 has-text-grey-dark" style="margin-top: 1rem;">
+                  <strong>Plates Stacking</strong>
+                </p>
+              </div>
+            </div>
+            
+            <!-- Pen Capping -->
+            <div class="column is-3">
+              <div class="has-text-centered">
+                <video controls style="width: 100%; max-width: 500px; height: auto;">
+                  <source src="./assets/hrdt/videos/pen_capping.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <p class="has-text-centered is-size-6 has-text-grey-dark" style="margin-top: 1rem;">
+                  <strong>Pen Capping</strong>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Information -->
+        <div class="content has-text-justified" style="margin-top: 3rem;">
+          <div class="has-text-centered">
+            <p class="is-size-6 has-text-grey-dark">
+              <strong>Note:</strong> More demos coming soon
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Real-world Task Definitions -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">Real-world Task Definitions</h2>
+        
+        <div class="has-text-centered my-5">
+          <figure class="image">
+            <img src="./assets/hrdt/figure4.png" alt="Real-world Task Definitions" style="max-width: 120%; height: auto; display: block; margin: 0 auto;">
+          </figure>
+          <p class="has-text-grey is-size-6">Figure 4: Task definition of real-world experiments.</p>
+        </div>
+        
+        <div class="content has-text-justified">
+          <p>
+            Our real-world experiments encompass diverse bimanual manipulation tasks across multiple robotic platforms:
+          </p>
           <ul>
-            <li>
-              <strong>Novel Human-to-Robot Knowledge Transfer Framework</strong>: Structural and training method innovations for human-to-robot knowledge transfer through human manipulation data pre-training.
-            </li>
-            <li>
-              <strong>Modular Diffusion Transformer Architecture</strong>: Specialized action encoders and decoders designed to support effective knowledge transfer from human embodiment to diverse robot platforms.
-            </li>
-            <li>
-              <strong>Two-Stage Training Strategy</strong>: Combining large-scale human data pre-training with cross-embodiment fine-tuning using flow matching techniques.
-            </li>
-            <li>
-              <strong>Comprehensive Experimental Validation</strong>: Demonstrating effectiveness across multiple tasks, environments, and evaluation metrics.
-            </li>
+            <li><strong>Dual-Arm Piper</strong>: Towel folding and cup-to-coaster placement tasks requiring deformable object manipulation and spatial reasoning</li>
+            <li><strong>Dual-Arm UR5</strong>: Takeout bag placement tasks with sequential bimanual coordination</li>
+            <li><strong>Dual-Arm ARX5</strong>: Pick-and-place manipulation tasks including stacking bowls and object placement</li>
           </ul>
+          <p>
+            These tasks validate H-RDT's ability to handle complex real-world scenarios with varying degrees of dexterity and coordination requirements.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- BibTeX Citation -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">BibTeX</h2>
+        <div class="content has-text-justified">
+          <p>
+            If you find our work helpful, please cite us:
+          </p>
+        </div>
+        <pre><code>@misc{bi2025hrdt,
+    title={H-RDT: Human Manipulation Enhanced Bimanual Robotic Manipulation}, 
+    author={Hongzhe Bi and Lingxuan Wu and Tianwei Lin and Hengkai Tan and Zhizhong Su and Hang Su and Jun Zhu},
+    year={2025},
+    eprint={2507.23523},
+    archivePrefix={arXiv},
+    primaryClass={cs.RO},
+    url={https://embodiedfoundation.github.io/hrdt}, 
+}</code></pre>
+        <div class="content has-text-justified">
+          <p>
+            Thank you!
+          </p>
         </div>
       </div>
     </div>
@@ -391,6 +643,111 @@
     </div>
   </div>
 </footer>
+
+<!-- Video Carousel JavaScript -->
+<script>
+// 存储每个轮播的当前位置
+const carouselPositions = {
+  'cup-place-hrdt-carousel': 0,
+  'cup-place-scratch-carousel': 0,
+  'fold-towel-hrdt-carousel': 0,
+  'fold-towel-scratch-carousel': 0
+};
+
+// 获取轮播的幻灯片数量
+function getSlideCount(carouselId) {
+  const carousel = document.getElementById(carouselId);
+  return carousel.querySelectorAll('.video-slide').length;
+}
+
+// 更新轮播显示
+function updateCarousel(carouselId) {
+  const carousel = document.getElementById(carouselId);
+  const slidesContainer = carousel.querySelector('.video-slides-container');
+  const indicators = carousel.querySelectorAll('.carousel-indicator');
+  const currentPosition = carouselPositions[carouselId];
+  
+  // 移动幻灯片容器
+  slidesContainer.style.transform = `translateX(-${currentPosition * 100}%)`;
+  
+  // 更新指示器
+  indicators.forEach((indicator, index) => {
+    indicator.classList.toggle('active', index === currentPosition);
+  });
+  
+  // 暂停所有视频
+  const videos = carousel.querySelectorAll('video');
+  videos.forEach(video => {
+    video.pause();
+  });
+}
+
+// 切换幻灯片
+function changeSlide(carouselId, direction) {
+  const slideCount = getSlideCount(carouselId);
+  const currentPosition = carouselPositions[carouselId];
+  
+  // 计算新位置
+  let newPosition = currentPosition + direction;
+  
+  // 处理边界情况
+  if (newPosition < 0) {
+    newPosition = slideCount - 1;
+  } else if (newPosition >= slideCount) {
+    newPosition = 0;
+  }
+  
+  carouselPositions[carouselId] = newPosition;
+  updateCarousel(carouselId);
+}
+
+// 跳转到指定幻灯片
+function goToSlide(carouselId, slideIndex) {
+  carouselPositions[carouselId] = slideIndex;
+  updateCarousel(carouselId);
+}
+
+// 页面加载完成后初始化轮播
+document.addEventListener('DOMContentLoaded', function() {
+  // 初始化所有轮播
+  Object.keys(carouselPositions).forEach(carouselId => {
+    updateCarousel(carouselId);
+  });
+  
+  // 为所有视频添加点击播放/暂停功能
+  const videos = document.querySelectorAll('.video-carousel video');
+  videos.forEach(video => {
+    video.addEventListener('click', function() {
+      if (video.paused) {
+        // 暂停其他正在播放的视频
+        videos.forEach(otherVideo => {
+          if (otherVideo !== video) {
+            otherVideo.pause();
+          }
+        });
+        video.play();
+      } else {
+        video.pause();
+      }
+    });
+  });
+});
+
+// 键盘导航支持
+document.addEventListener('keydown', function(e) {
+  const focusedCarousel = document.querySelector('.video-carousel:hover');
+  if (focusedCarousel) {
+    const carouselId = focusedCarousel.id;
+    if (e.key === 'ArrowLeft') {
+      changeSlide(carouselId, -1);
+      e.preventDefault();
+    } else if (e.key === 'ArrowRight') {
+      changeSlide(carouselId, 1);
+      e.preventDefault();
+    }
+  }
+});
+</script>
 
 </body>
 </html> 
